@@ -10,7 +10,7 @@
             <% animals.forEach(animal => { %>
             <tr>
                 <td><%= animal.pedId %></td>
-                <td><%= animal.name %></td>
+                <td><a href="/<%= animal._id %>"><%= animal.name %></a></td>
                 <td><%= animal.breed %></td>
                 <td><%= animal.age %></td>
             </tr>

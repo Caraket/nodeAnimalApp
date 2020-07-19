@@ -93,6 +93,17 @@ app.put("/:id", (req, res) => {
     })
 })
 
+//Delete Route
+app.delete("/:id", (req, res) => {
+    Animal.findByIdAndDelete(req.params.id, (err, deletedAnimal) => {
+        if(err){
+            res.redirect("/");
+        } else{
+            res.redirect("/");
+        }
+    })
+});
+
 app.listen(3000, () => {
     console.log("App is listening on port 3000");
 })
