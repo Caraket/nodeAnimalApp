@@ -1,0 +1,29 @@
+<%- include ("partials/header"); %>
+    <table class="table table-bordered table-dark">
+        <tr>
+                <th>Pet ID</th>
+                <th>Name</th>
+                <th>Breed</th>
+                <th>Age</th>
+        </tr>
+        
+            <% animals.forEach(animal => { %>
+            <tr>
+                <td><%= animal.pedId %></td>
+                <td><%= animal.name %></td>
+                <td><%= animal.breed %></td>
+                <td><%= animal.age %></td>
+            </tr>
+            <% }) %>
+        
+        
+
+        
+    </table>
+    <a class="btn btn-dark" href="/new">Add New Animal</a>
+    
+    
+
+
+
+<%- include ("partials/footer"); %>
