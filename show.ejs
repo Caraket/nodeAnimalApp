@@ -1,0 +1,24 @@
+<%- include ("partials/header") %>
+<div class="contained">
+    <div class="ui main text container segment">
+        <div class="ui huge header"><%= animal.name %></div>
+            <div class="ui top attached">
+                <div class="item">
+                <img class="ui centered rounded image" src="<%= animal.image %>">
+                <span> Sex:  <%= animal.sex %> </span>
+                <p>Intake Date: <%= animal.intake.toDateString() %></p>
+                <p>Fixed: <%= animal.fixed %></p>
+                <div class="content">
+                <span>Created: <%= animal.created.toDateString() %></span>
+            </div>
+            <a class="ui green button" href="/<%= animal._id %>/edit">Edit</a>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+<%- include ("partials/footer") %>

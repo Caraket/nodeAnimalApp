@@ -1,0 +1,32 @@
+<%- include ("partials/header"); %>
+
+<div class="contained">
+    <form class="ui form" action="/" method="POST">
+        <div class="field">
+            <label>Name</label>
+            <input type="text" name="animal[name]" placeholder="name">
+        </div>
+        <div class="field">
+            <label>Sex</label>
+            <input type="text" name="animal[sex]" placeholder="sex">
+        </div>
+        <div class="field">
+            <label>Image</label>
+            <input type="text" name="animal[image]" placeholder="image">
+        </div>
+        <div class="field">
+            <label>Intake Date</label>
+            <input type="date" name="animal[intake]" placeholder="Intake Date">
+        </div>
+        <div class="field">
+            <label>Fixed?</label>
+            <input type="text" name="animal[fixed]" placeholder="Fixed?">
+        </div>
+        <input class="ui grey big basic button" type="submit">
+    </form>  
+</div>
+
+
+
+
+<%- include ("partials/footer") %>
