@@ -1,28 +1,47 @@
 <%- include ("partials/header"); %>
 
 <div class="contained">
-    <form class="ui form" action="/" method="POST">
-        <div class="field">
-            <label>Name</label>
-            <input type="text" name="animal[name]" placeholder="name">
+    <form action="/" method="POST">
+        <div class="form-group">
+            <label>Pet ID</label>
+            <input type="text" name="animal[petId]" placeholder="PetId">
         </div>
-        <div class="field">
-            <label>Sex</label>
-            <input type="text" name="animal[sex]" placeholder="sex">
-        </div>
-        <div class="field">
-            <label>Image</label>
-            <input type="text" name="animal[image]" placeholder="image">
-        </div>
-        <div class="field">
-            <label>Intake Date</label>
-            <input type="date" name="animal[intake]" placeholder="Intake Date">
-        </div>
-        <div class="field">
-            <label>Fixed?</label>
-            <input type="text" name="animal[fixed]" placeholder="Fixed?">
-        </div>
-        <input class="ui grey big basic button" type="submit">
+         <div class="form-group">
+             <label>Name</label>
+             <input type="text" name="animal[name]" placeholder="Name">
+         </div>
+         <div class="form-group">
+             <label>Sex</label>
+             <input type="text" name="animal[sex]" placeholder="Sex">
+         </div>
+         <div class="form-group">
+             <label>Breed</label>
+             <input type="text" name="animal[breed]" placeholder="Breed">
+         </div>
+         <div class="form-group">
+             <label>Age</label>
+             <input type="text" name="animal[age]" placeholder="Age">
+         </div>
+         <div class="form-group">
+             <label>Intake Date</label>
+             <input type="date" name="animal[intake]">
+         </div>
+         <div class="form-group">
+             <label>Altered?</label>
+             <select class="form-control">
+                 <option>Yes</option>
+                 <option>No</option>
+             </select>
+         </div>
+         <div class="form-group">
+             <label>Altered Date</label>
+             <input type="date" name="animal[alteredDate]">
+         </div>
+         <div class="form-group">
+             <label>Comments</label>
+             <textarea class="form-control" rows="3" name="animal[body]"></textarea>
+         </div>
+        <input class="btn btn-primary" type="submit">
     </form>  
 </div>
 
