@@ -2,6 +2,10 @@
 
 <div class="contained">
     <form class="ui form" action="/<%= animal._id %>?_method=PUT" method="POST">
+       <div class="field">
+           <label>Pet ID</label>
+           <input type="text" name="animal[petId]" value="<%= animal.petId %>">
+       </div>
         <div class="field">
             <label>Name</label>
             <input type="text" name="animal[name]" value="<%= animal.name %>">
@@ -11,16 +15,24 @@
             <input type="text" name="animal[sex]" value="<%= animal.sex %>">
         </div>
         <div class="field">
-            <label>Image</label>
-            <input type="text" name="animal[image]" value="<%= animal.image %>">
+            <label>Breed</label>
+            <input type="text" name="animal[breed]" value="<%= animal.breed %>">
+        </div>
+        <div class="field">
+            <label>Age</label>
+            <input type="text" name="animal[age]" value="<%= animal.age %>">
         </div>
         <div class="field">
             <label>Intake Date</label>
             <input type="date" name="animal[intake]" value="<%= animal.intake %> ">
         </div>
         <div class="field">
-            <label>Fixed?</label>
-            <input type="text" name="animal[fixed]" value="<%= animal.fixed %>">
+            <label>Altered?</label>
+            <input type="text" name="animal[altered]" value="<%= animal.altered %>">
+        </div>
+        <div class="field">
+            <label>Altered Date</label>
+            <input type="date" name="animal[alteredDate]" value="<%= animal.alteredDate %>">
         </div>
         <input class="ui grey big basic button" type="submit">
     </form>  

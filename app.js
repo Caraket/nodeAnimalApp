@@ -19,13 +19,14 @@ app.use(methodOverride("_method"));
 const animalSchema = new mongoose.Schema({
     petId: String,
     name: String,
-    image: String,
-    body: String,
     sex: String,
-    altered: String,
+    breed: String,
+    age: {type: Number},
+    altered: Boolean,
     alteredDate: {type: Date},
     intake: {type: Date, default: Date.now},
-    created: {type: Date, default: Date.now}
+    created: {type: Date, default: Date.now},
+    body: String,
 });
 const Animal = mongoose.model("Animal", animalSchema);
 
@@ -94,7 +95,7 @@ app.put("/:id", (req, res) => {
 })
 
 //Delete Route
-app.delete("/:id", (req, res) => {
+app.delete("/:id/", (req, res) => {
     Animal.findByIdAndDelete(req.params.id, (err, deletedAnimal) => {
         if(err){
             res.redirect("/");

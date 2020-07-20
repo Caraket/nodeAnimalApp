@@ -11,7 +11,10 @@
                 <div class="content">
                 <span>Created: <%= animal.created.toDateString() %></span>
             </div>
-            <a class="ui green button" href="/<%= animal._id %>/edit">Edit</a>
+            <a class="btn btn-primary" href="/<%= animal._id %>/edit">Edit</a>
+            <form actions="/anima/<%= animal._id %>?_method=DELETE" method="POST">
+                <a class="btn btn-danger" href="<%= animal._id%>">Delete</a>
+            </form>
         </div>
     </div>
 </div>
