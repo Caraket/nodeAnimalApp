@@ -1,15 +1,23 @@
 <%- include ("partials/header") %>
 <div class="contained">
     <div class="ui main text container segment">
-        <div class="ui huge header"><%= animal.name %></div>
+        <div class="jumbotron">
+            <h1><%= animal.name %></h1>
+            <h3>Pet ID: <%= animal.petId %></h3>
+            <span class="font-weight-bold">Intake Date: <%= animal.intake.toDateString() %></span>
+        </div>
             <div class="ui top attached">
                 <div class="item">
                 <img class="ui centered rounded image" src="<%= animal.image %>">
-                <span> Sex:  <%= animal.sex %> </span>
-                <p>Intake Date: <%= animal.intake.toDateString() %></p>
-                <p>Fixed: <%= animal.fixed %></p>
+                <p> Sex:  <%= animal.sex %> </p>
+                <p>Breed: <%= animal.breed %></p>
+                <p>Age: <%= animal.age %></p>
+                <p>Altered: <%= animal.altered %></p>
+                <p>Alter Date: <%= animal.alteredDate%></p>
+                <p>Comments: <%= animal.body %></p>
                 <div class="content">
                 <span>Created: <%= animal.created.toDateString() %></span>
+                
             </div>
             <a class="btn btn-primary" href="/<%= animal._id %>/edit">Edit</a>
             <form actions="/anima/<%= animal._id %>?_method=DELETE" method="POST">

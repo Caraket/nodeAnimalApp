@@ -22,7 +22,7 @@ const animalSchema = new mongoose.Schema({
     sex: String,
     breed: String,
     age: {type: Number},
-    altered: Boolean,
+    altered: String,
     alteredDate: {type: Date},
     intake: {type: Date, default: Date.now},
     created: {type: Date, default: Date.now},
