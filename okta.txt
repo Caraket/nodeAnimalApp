@@ -1,0 +1,8 @@
+org-url: https://dev-144067.okta.com
+
+client id: 0oalyslqxdiIqcBBK4x6
+
+client secret: 3bhN9OZwpNCGY6FjJKz_075ohSaNWzkZyqspC2bS
+
+
+api token: 00UGeAJU3l2azKUuB5CXDju-9uvsVBIvf78-uV6Ya1

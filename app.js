@@ -120,6 +120,10 @@ app.post("/", (req, res) => {
     });
 });
 
+app.get("/login", (req, res) => {
+    res.render("login");
+});
+
 //SHOW ROUTE
 app.get("/:id", loginRequired, (req, res) => {
     Animal.findById(req.params.id, (err, foundAnimal) => {
