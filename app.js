@@ -4,32 +4,9 @@ const express          = require("express"),
       methodOverride   = require("method-override"),
       mongoose         = require("mongoose"),
       session          = require("express-session"),
-      okta             = require("@okta/okta-sdk-nodejs"),
-      expressOIDC      = require("@okta/oidc-middleware").ExpressOIDC,
       app              = express();
 
-var oktaClient = new okta.Client({
-    orgUrl: 'https://dev-144067.okta.com',
-    token: '00UGeAJU3l2azKUuB5CXDju-9uvsVBIvf78-uV6Ya1'
-});
 
-const oidc = new expressOIDC({
-    issuer: "https://dev-144067.okta.com/oauth2/default",
-    client_id: '0oalyslqxdiIqcBBK4x6',
-    client_secret: '3bhN9OZwpNCGY6FjJKz_075ohSaNWzkZyqspC2bS',
-    appBaseUrl: 'http://localhost:3000',
-    redirect_uri: 'localhost:3000/login',
-    scope: "openid profile",
-    routes: {
-        login: {
-            path: "/login"
-        },
-        callback: {
-            path: "/",
-            defaultRedirect: "/"
-        }
-    }
-});
 
 
 // APP CONFIG
@@ -40,34 +17,6 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressSanitizer());
 app.use(methodOverride("_method"));
-app.use(session({
-    secret: 'sadkfj23i90ufsdfjh23409u82thisdjfk3209',
-    resave: true,
-    saveUninitialized: false
-}));
-app.use(oidc.router);
-
-app.use((req, res, next) => {
-    if(!req.userinfo){
-        return next();
-    }
-
-    oktaClient.getUser(req.userinfo.sub)
-        .then(user => {
-            req.user = user;
-            res.locals.user = user;
-            next();
-        }).catch(err => {
-            next(err);
-        });
-});
-
-function loginRequired(req, res, next){
-    if(!req.user){
-        return res.status(401).render("unauthenticated");
-    }
-    next();
-}
 
 //MONGOOSE/MODEL CONFIG
 const animalSchema = new mongoose.Schema({
@@ -85,12 +34,6 @@ const animalSchema = new mongoose.Schema({
 const Animal = mongoose.model("Animal", animalSchema);
 
 // RESTful ROUTES
-
-// TEST ROUTE
-app.get('/test', (req, res) => {
-    res.json({ profile: req.user ? req.user.profile : null});
-});
-
 
 //INDEX ROUTE
 app.get("/", (req, res) =>{
