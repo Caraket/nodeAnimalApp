@@ -18,14 +18,14 @@ const oidc = new expressOIDC({
     client_id: '0oalyslqxdiIqcBBK4x6',
     client_secret: '3bhN9OZwpNCGY6FjJKz_075ohSaNWzkZyqspC2bS',
     appBaseUrl: 'http://localhost:3000',
-    redirect_uri: 'http://localhost:3000/users/callback',
+    redirect_uri: 'localhost:3000/login',
     scope: "openid profile",
     routes: {
         login: {
-            path: "users/login"
+            path: "/login"
         },
         callback: {
-            path: "/users/callback",
+            path: "/",
             defaultRedirect: "/"
         }
     }
@@ -125,7 +125,7 @@ app.get("/login", (req, res) => {
 });
 
 //SHOW ROUTE
-app.get("/:id", loginRequired, (req, res) => {
+app.get("/:id", (req, res) => {
     Animal.findById(req.params.id, (err, foundAnimal) => {
         if(err){
             console.log(err);
@@ -171,4 +171,4 @@ app.delete("/:id/", (req, res) => {
 
 app.listen(3000, () => {
     console.log("App is listening on port 3000");
-})
+});
