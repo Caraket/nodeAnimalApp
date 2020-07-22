@@ -1,5 +1,6 @@
 const express = require("express");
-const router = express.router;
+const router = express.Router();
+const Animal = require("./Models/Animal");
 
 
 // RESTful ROUTES
@@ -80,3 +81,5 @@ router.delete("/:id/", (req, res) => {
         }
     })
 });
+
+module.exports = router;

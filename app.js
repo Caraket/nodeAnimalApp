@@ -4,6 +4,7 @@ const express          = require("express"),
       methodOverride   = require("method-override"),
       mongoose         = require("mongoose"),
       session          = require("express-session"),
+      animal           = require("./Models/Animal")
       app              = express();
 
 const routes = require("./routes");
@@ -20,20 +21,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressSanitizer());
 app.use(methodOverride("_method"));
 
-//MONGOOSE/MODEL CONFIG
-const animalSchema = new mongoose.Schema({
-    petId: String,
-    name: String,
-    sex: String,
-    breed: String,
-    age: {type: Number},
-    altered: String,
-    alteredDate: {type: Date},
-    intake: {type: Date, default: Date.now},
-    created: {type: Date, default: Date.now},
-    body: String,
-});
-const Animal = mongoose.model("Animal", animalSchema);
+
+app.use(routes);
 
 app.listen(3000, () => {
     console.log("App is listening on port 3000");
