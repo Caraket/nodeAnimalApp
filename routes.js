@@ -35,8 +35,8 @@ router.get("/new", (req, res) => {
 });
 
 //NEW DOG ROUTE
-router.get("./Dogs/dogNew", (req, res) => {
-    res.render("dogNew");
+router.get("/dogNew", (req, res) => {
+    res.render("./Dogs/dogNew");
 })
 
 //CREATE ROUTE
@@ -51,7 +51,7 @@ router.post("/", (req, res) => {
 });
 
 //DOG CREATE ROUTE
-router.post("/", (req, res) => {
+router.post("/dogs", (req, res) => {
     Dogs.create(req.body.dogs, (err, newDog) =>{
         if(err){
             throw new Error("Dog not found;");
@@ -65,6 +65,17 @@ router.get("/login", (req, res) => {
     res.render("login");
 });
 
+//SHOW DOG ROUTE
+router.get("/dogs/:id", (req, res) => {
+    Dog.findById(req.params.id, (err, foundDog) => {
+        if(err){
+            console.log(err);
+            res.redirect("/dogs");
+        } else{
+            res.render("dogShow", {dog: foundDog});
+        }
+    });
+});
 //SHOW ROUTE
 router.get("/:id", (req, res) => {
     Animal.findById(req.params.id, (err, foundAnimal) => {

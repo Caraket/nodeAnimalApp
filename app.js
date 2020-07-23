@@ -8,8 +8,6 @@ const express          = require("express"),
 const routes = require("./routes");
 
 
-
-
 // APP CONFIG
 mongoose.set("useUnifiedTopology", true);
 mongoose.connect("mongodb://localhost:27017/animalapp", {useNewUrlParser: true});

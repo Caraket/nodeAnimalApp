@@ -1,0 +1,35 @@
+<%- include ("partials/header") %>
+<div class="contained">
+    <div class="ui main text container segment">
+        <div class="jumbotron">
+            <h1><%= dog.name %></h1>
+            <h3>Pet ID: <%= dog.petId %></h3>
+            <span class="font-weight-bold">Intake Date: <%= dog.intake.toDateString() %></span>
+        </div>
+            <div class="ui top attached">
+                <div class="item">
+                <img class="ui centered rounded image" src="<%= animal.image %>">
+                <p> Sex:  <%= dog.sex %> </p>
+                <p>Breed: <%= dog.breed %></p>
+                <p>Age: <%= dog.age %></p>
+                <p>Altered: <%= dog.altered %></p>
+                <p>Alter Date: <%= dog.alteredDate%></p>
+                <p>Comments: <%= dog.body %></p>
+                <div class="content">
+                <span>Created: <%= dog.created.toDateString() %></span>
+                
+            </div>
+            <a class="btn btn-primary" href="/<%= dog._id %>/edit">Edit</a>
+            <form actions="/anima/<%= dog._id %>?_method=DELETE" method="POST">
+                <a class="btn btn-danger" href="<%= dog._id%>">Delete</a>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+<%- include ("partials/footer") %>
