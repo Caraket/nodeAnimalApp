@@ -32,12 +32,12 @@ router.post("/dogs", (req, res) => {
 
 //SHOW DOG ROUTE
 router.get("/dogs/:id", (req, res) => {
-    Dog.findById(req.params.id, (err, foundDog) => {
+    Dogs.findById(req.params.id, (err, foundDog) => {
         if(err){
             console.log(err);
             res.redirect("/dogs");
         } else{
-            res.render("/Dogs/dogShow", {dog: foundDog});
+            res.render("./Dogs/dogShow", {dog: foundDog});
         }
     });
 });
