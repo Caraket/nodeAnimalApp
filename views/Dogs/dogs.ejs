@@ -1,0 +1,37 @@
+<%- include ("../partials/header"); %>
+    <table class="table table-bordered table-dark">
+        <tr>
+                <th>Pet ID</th>
+                <th>Name</th>
+                <th>Breed</th>
+                <th>Age</th>
+                <th>Sex</th>
+                <th>Altered</th>
+                <th>Alter Date</th>
+                <th>Intake Date</th>
+        </tr>
+        
+            <% dogs.forEach(animal => { %>
+            <tr>
+                <td><%= dogs.petId %></td>
+                <td><a href="/<%= dogs._id %>"><%= dogs.name %></a></td>
+                <td><%= dogs.breed %></td>
+                <td><%= dogs.age %></td>
+                <td><%= dogs.sex %></td>
+                <td><%= dogs.altered %></td>
+                <td><%= dogs.alteredDate %></td>
+                <td><%= dogs.intake %></td>
+            </tr>
+            <% }) %>
+        
+        
+
+        
+    </table>
+    <a class="btn btn-dark" href="/dogNew">New Animal</a>
+    
+    
+
+
+
+<%- include ("../partials/footer"); %>

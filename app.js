@@ -3,8 +3,6 @@ const express          = require("express"),
       bodyParser       = require("body-parser"),
       methodOverride   = require("method-override"),
       mongoose         = require("mongoose"),
-      session          = require("express-session"),
-      animal           = require("./Models/Animal")
       app              = express();
 
 const routes = require("./routes");
