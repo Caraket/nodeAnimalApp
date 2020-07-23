@@ -44,7 +44,7 @@ router.get("/cats/:id", (req, res) => {
 
 // cat EDIT ROUTE
 router.get("/cats/:id/edit", (req, res) => {
-    Animal.findById(req.params.id, (err, foundCat) => {
+    Cats.findById(req.params.id, (err, foundCat) => {
         if(err){
             res.redirect("/");
         } else{
