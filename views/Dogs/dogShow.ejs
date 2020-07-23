@@ -20,9 +20,9 @@
                 <span>Created: <%= dog.created.toDateString() %></span>
                 
             </div>
-            <a class="btn btn-primary" href="/<%= dog._id %>/edit">Edit</a>
+            <a class="btn btn-primary" href="/dogs/<%= dog._id %>/edit">Edit</a>
             <form actions="/anima/<%= dog._id %>?_method=DELETE" method="POST">
-                <a class="btn btn-danger" href="<%= dog._id%>">Delete</a>
+                <a class="btn btn-danger" href="/dogs/<%= dog._id%>">Delete</a>
             </form>
         </div>
     </div>
