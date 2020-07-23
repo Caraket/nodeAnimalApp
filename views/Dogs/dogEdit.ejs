@@ -1,0 +1,45 @@
+<%- include ("partials/header"); %>
+
+<div class="contained">
+    <form class="form" action="/<%= dog._id %>?_method=PUT" method="POST">
+       <div class="form-group">
+           <label>Pet ID</label>
+           <input type="text" name="dog[petId]" value="<%= dog.petId %>">
+       </div>
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="dog[name]" value="<%= dog.name %>">
+        </div>
+        <div class="form-group">
+            <label>Sex</label>
+            <input type="text" name="dog[sex]" value="<%= dog.sex %>">
+        </div>
+        <div class="form-group">
+            <label>Breed</label>
+            <input type="text" name="dog[breed]" value="<%= dog.breed %>">
+        </div>
+        <div class="form-group">
+            <label>Age</label>
+            <input type="text" name="dog[age]" value="<%= dog.age %>">
+        </div>
+        <div class="form-group">
+            <label>Intake Date</label>
+            <input type="date" name="dog[intake]" value="<%= dog.intake %> ">
+        </div>
+        <div class="form-group">
+            <label>Altered?</label>
+            <input type="text" name="dog[altered]" value="<%= dog.altered %>">
+        </div>
+        <div class="form-group">
+            <label>Altered Date</label>
+            <input type="date" name="dog[alteredDate]" value="<%= dog.alteredDate %>">
+        </div>
+        <div class="form-group">
+            <label>Comments</label>
+            <textarea class="form-control" rows="3" name="dog[body]" value="<%= dog.body %>"></textarea>
+        </div>
+        <input class="ui grey big basic button" type="submit">
+    </form>  
+</div>
+
+<%- include ("partials/footer") %>

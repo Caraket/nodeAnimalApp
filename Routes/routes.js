@@ -1,7 +1,7 @@
 const express = require("express");
 const router  = express.Router();
-const Animal  = require("./Models/Animal");
-const Dogs    = require("./Models/Dogs"); 
+const Animal  = require("../Models/Animal");
+
 
 
 // RESTful ROUTES
@@ -18,26 +18,14 @@ router.get("/", (req, res) =>{
     });
 });
 
-// Dog Route
-router.get("/dogs", (req, res) => {
-    Dogs.find({}, (err, dogs) => {
-        if(err){
-            console.log(err);
-        } else{
-            res.render("./Dogs/dogs", {dogs: dogs});
-        }
-    });
-});
+
 
 //NEW ROUTE
 router.get("/new", (req, res) => {
     res.render("new");
 });
 
-//NEW DOG ROUTE
-router.get("/dogNew", (req, res) => {
-    res.render("./Dogs/dogNew");
-})
+
 
 //CREATE ROUTE
 router.post("/", (req, res) => {
@@ -50,32 +38,6 @@ router.post("/", (req, res) => {
     });
 });
 
-//DOG CREATE ROUTE
-router.post("/dogs", (req, res) => {
-    Dogs.create(req.body.dogs, (err, newDog) =>{
-        if(err){
-            throw new Error("Dog not found;");
-        } else{
-            res.redirect("/dogs");
-        }
-    })
-})
-
-router.get("/login", (req, res) => {
-    res.render("login");
-});
-
-//SHOW DOG ROUTE
-router.get("/dogs/:id", (req, res) => {
-    Dog.findById(req.params.id, (err, foundDog) => {
-        if(err){
-            console.log(err);
-            res.redirect("/dogs");
-        } else{
-            res.render("dogShow", {dog: foundDog});
-        }
-    });
-});
 //SHOW ROUTE
 router.get("/:id", (req, res) => {
     Animal.findById(req.params.id, (err, foundAnimal) => {
