@@ -1,0 +1,51 @@
+<%- include ("../partials/header"); %>
+
+<div class="contained">
+    <form action="/cats" method="POST">
+        <div class="form-group">
+            <label>Pet ID</label>
+            <input type="text" name="cats[petId]" placeholder="PetId">
+        </div>
+         <div class="form-group">
+             <label>Name</label>
+             <input type="text" name="cats[name]" placeholder="Name">
+         </div>
+         <div class="form-group">
+             <label>Sex</label>
+             <input type="text" name="cats[sex]" placeholder="Sex">
+         </div>
+         <div class="form-group">
+             <label>Breed</label>
+             <input type="text" name="cats[breed]" placeholder="Breed">
+         </div>
+         <div class="form-group">
+             <label>Age</label>
+             <input type="text" name="cats[age]" placeholder="Age">
+         </div>
+         <div class="form-group">
+             <label>Intake Date</label>
+             <input type="date" name="cats[intake]">
+         </div>
+         <div class="form-group">
+             <label>Altered?</label>
+             <select class="form-control">
+                 <option>Yes</option>
+                 <option>No</option>
+             </select>
+         </div>
+         <div class="form-group">
+             <label>Altered Date</label>
+             <input type="date" name="cats[alteredDate]">
+         </div>
+         <div class="form-group">
+             <label>Comments</label>
+             <textarea class="form-control" rows="3" name="cats[body]"></textarea>
+         </div>
+        <input class="btn btn-primary" type="submit">
+    </form>  
+</div>
+
+
+
+
+<%- include ("../partials/footer") %>

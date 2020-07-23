@@ -6,7 +6,8 @@ const express          = require("express"),
       app              = express();
 
 const routes    = require("./Routes/routes"),
-      dogRoutes = require("./Routes/dogRoutes");
+      dogRoutes = require("./Routes/dogRoutes"),
+      catRoutes = require("./Routes/catRoutes");
 
 // APP CONFIG
 mongoose.set("useUnifiedTopology", true);
@@ -17,6 +18,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressSanitizer());
 app.use(methodOverride("_method"));
 
+app.use(catRoutes);
 app.use(dogRoutes);
 app.use(routes);
 

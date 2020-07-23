@@ -11,16 +11,16 @@
                 <th>Intake Date</th>
         </tr>
         
-            <% dogs.forEach(dog => { %>
+            <% cats.forEach(cat => { %>
             <tr>
-                <td><%= dog.petId %></td>
-                <td><a href="/dogs/<%= dog._id %>"><%= dog.name %></a></td>
-                <td><%= dog.breed %></td>
-                <td><%= dog.age %></td>
-                <td><%= dog.sex %></td>
-                <td><%= dog.altered %></td>
-                <td><%= dog.alteredDate %></td>
-                <td><%= dog.intake %></td>
+                <td><%= cat.petId %></td>
+                <td><a href="/cats/<%= cat._id %>"><%= cat.name %></a></td>
+                <td><%= cat.breed %></td>
+                <td><%= cat.age %></td>
+                <td><%= cat.sex %></td>
+                <td><%= cat.altered %></td>
+                <td><%= cat.alteredDate %></td>
+                <td><%= cat.intake %></td>
             </tr>
             <% }) %>
         
@@ -28,7 +28,7 @@
 
         
     </table>
-    <a class="btn btn-dark" href="/dogNew">New Dog</a>
+    <a class="btn btn-dark" href="/catNew">New Cat</a>
     
     
 
