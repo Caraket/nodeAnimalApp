@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 
-const dogSchema = new mongoose.Schema({
+const volunteerSchema = new mongoose.Schema({
     petId: String,
     name: String,
     sex: String,
@@ -13,5 +13,5 @@ const dogSchema = new mongoose.Schema({
     body: String,
 });
 
-var dogModel = mongoose.model("Dog", dogSchema);
-module.exports = dogModel;
+var volunteerModel = mongoose.model("Foster", volunteerSchema);
+module.exports = volunteerModel;

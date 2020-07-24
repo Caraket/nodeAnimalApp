@@ -12,23 +12,25 @@
         </tr>
         
             <% cats.forEach(cat => { %>
-            <tr>
-                <td><%= cat.petId %></td>
-                <td><a href="/cats/<%= cat._id %>"><%= cat.name %></a></td>
-                <td><%= cat.breed %></td>
-                <td><%= cat.age %></td>
-                <td><%= cat.sex %></td>
-                <td><%= cat.altered %></td>
-                <td><%= cat.alteredDate %></td>
-                <td><%= cat.intake %></td>
-            </tr>
+                <% if (cat.species == "cat"){ %>
+                    <tr>
+                        <td><%= cat.petId %></td>
+                        <td><a href="/<%= cat._id %>"><%= cat.name %></a></td>
+                        <td><%= cat.breed %></td>
+                        <td><%= cat.age %></td>
+                        <td><%= cat.sex %></td>
+                        <td><%= cat.altered %></td>
+                        <td><%= cat.alteredDate %></td>
+                        <td><%= cat.intake %></td>
+                    </tr>
+                <% } %>
             <% }) %>
         
         
 
         
     </table>
-    <a class="btn btn-dark" href="/catNew">New Cat</a>
+    <a class="btn btn-dark" href="/new">New Cat</a>
     
     
 

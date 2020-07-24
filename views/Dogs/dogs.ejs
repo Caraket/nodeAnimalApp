@@ -1,4 +1,6 @@
 <%- include ("../partials/header"); %>
+
+<h1>dogs</h1>
     <table class="table table-bordered table-dark">
         <tr>
                 <th>Pet ID</th>
@@ -11,24 +13,26 @@
                 <th>Intake Date</th>
         </tr>
         
-            <% dogs.forEach(dog => { %>
-            <tr>
-                <td><%= dog.petId %></td>
-                <td><a href="/dogs/<%= dog._id %>"><%= dog.name %></a></td>
-                <td><%= dog.breed %></td>
-                <td><%= dog.age %></td>
-                <td><%= dog.sex %></td>
-                <td><%= dog.altered %></td>
-                <td><%= dog.alteredDate %></td>
-                <td><%= dog.intake %></td>
-            </tr>
+            <% dogs.forEach(dogs => { %>
+                <% if(dogs.species == "dog"){ %>
+                    <tr>
+                        <td><%= dogs.petId %></td>
+                        <td><a href="/<%= dogs._id %>"><%= dogs.name %></a></td>
+                        <td><%= dogs.breed %></td>
+                        <td><%= dogs.age %></td>
+                        <td><%= dogs.sex %></td>
+                        <td><%= dogs.altered %></td>
+                        <td><%= dogs.alteredDate %></td>
+                        <td><%= dogs.intake %></td>
+                    </tr>
+                <% } %>
             <% }) %>
         
         
 
         
     </table>
-    <a class="btn btn-dark" href="/dogNew">New Dog</a>
+    <a class="btn btn-dark" href="/New">New dogs</a>
     
     
 

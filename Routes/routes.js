@@ -69,8 +69,8 @@ router.put("/:id", (req, res) => {
         } else{
             res.redirect("/" + req.params.id);
         }
-    })
-})
+    });
+});
 
 //Delete Route
 router.delete("/:id/", (req, res) => {
