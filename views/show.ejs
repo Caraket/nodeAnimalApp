@@ -4,7 +4,9 @@
         <div class="jumbotron">
             <h1><%= animal.name %></h1>
             <h3>Pet ID: <%= animal.petId %></h3>
-            <span class="font-weight-bold">Intake Date: <%= animal.intake.toDateString() %></span>
+            
+            <span class="font-weight-bold">Intake Date: <% if(animal.intake != null){ %><%= animal.intake.toDateString() %></span>
+            <% } %>
         </div>
             <div class="ui top attached">
                 <div class="item">

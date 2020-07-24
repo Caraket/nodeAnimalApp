@@ -22,8 +22,12 @@
                         <td><%= dogs.age %></td>
                         <td><%= dogs.sex %></td>
                         <td><%= dogs.altered %></td>
-                        <td><%= dogs.alteredDate %></td>
-                        <td><%= dogs.intake %></td>
+                        <% if (dogs.alteredDate != null){ %>
+                        <td><%= dogs.alteredDate.toDateString() %></td>
+                        <% } %>
+                        <% if (dogs.intake != null) {%>
+                        <td><%= dogs.intake.toDateString()%></td>
+                        <% } %>
                     </tr>
                 <% } %>
             <% }) %>
