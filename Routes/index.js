@@ -2,7 +2,6 @@ const express = require("express");
 const router  = express.Router();
 const Animal  = require("../Models/Animal");
 
-router.use('/api', require('./api'));
 
 // RESTful ROUTES
 
