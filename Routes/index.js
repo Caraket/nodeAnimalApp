@@ -18,6 +18,15 @@ router.get("/", (req, res) =>{
 });
 
 
+function ensureAuthenticated(req, res, next) {
+    if(req.isAuthenticated()){
+        return next();
+    }
+    else{
+        res.redirect('/users/login');
+    }
+}
+
 
 //NEW ROUTE
 router.get("/new", (req, res) => {

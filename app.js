@@ -17,7 +17,10 @@ let db = mongoose.connection;
 mongoose.promise = global.Promise;
 
 
+const index = require('./Routes/index');
 const users = require('./Routes/users');
+const dogs = require('./Routes/dogRoutes');
+const cats = require('./Routes/catRoutes');
 
 // APP CONFIG
 mongoose.set("useUnifiedTopology", true);
@@ -61,8 +64,14 @@ app.use(expressValidator({
     }
 }));
 
+app.use((req, res, next) => {
+    res.locals.user = req.user || null;
+    next();
+})
 
-app.use(require('./Routes'));
+app.use('/', index);
+app.use('/dogs', dogs);
+app.use('/cats', cats);
 app.use('/users', users);
 
 app.listen(3000, () => {

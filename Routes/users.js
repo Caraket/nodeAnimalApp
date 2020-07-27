@@ -1,5 +1,9 @@
 const express = require('express');
+const user = require('../Models/user');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 const router = express.Router();
+
 
 //Register
 router.get('/register', (req, res) => {
@@ -32,10 +36,65 @@ router.post('/register', (req, res) => {
     var errors = req.validationErrors();
 
     if(errors){
-        console.log('YES');
+        res.render("register", {errors: errors});
     } else{
-        console.log('No');
+        var newUser = new user({
+            name: name,
+            email: email,
+            username: username,
+            password: password
+        });
+        user.createUser(newUser, (err, user) => {
+            if(err) throw err;
+            console.log(user);
+        });
+
+        res.redirect('login')
     }
+});
+
+passport.use(new LocalStrategy(
+    function(username, password, done) {
+      user.getUserByUsername(username, (err, user) => {
+          if(err){
+              throw err;
+          }
+          if(!user){
+              return done(null, false, {message: 'Unknown user'});
+          }
+
+          user.comparePassword(password, user.password, (err, isMatch) => {
+            if(err) {throw err;}
+            if(isMatch){
+                return done(null, user);
+            } else{
+                return done(null, false, {message: 'Invalid Password'});
+            }
+          })
+      });
+    }));
+
+    passport.serializeUser(function(user, done) {
+        done(null, user.id);
+      });
+      
+      passport.deserializeUser(function(id, done) {
+        User.getUserById(id, function(err, user) {
+          done(err, user);
+        });
+      });
+// Login
+router.post('/login', (req, res, next) => {
+    passport.authenticate('local', {
+      successRedirect: '/dashboard',
+      failureRedirect: '/users/login'
+    })(req, res, next);
+  });
+
+router.get('/logout', (req, res) => {
+    req.logout();
+
+    res.redirect('login');
 });
 
 module.exports = router;
