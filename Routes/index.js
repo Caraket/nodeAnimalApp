@@ -18,16 +18,6 @@ router.get("/", (req, res) =>{
 });
 
 
-function ensureAuthenticated(req, res, next) {
-    if(req.isAuthenticated()){
-        return next();
-    }
-    else{
-        res.redirect('/users/login');
-    }
-}
-
-
 //NEW ROUTE
 router.get("/new", (req, res) => {
     res.render("new");
@@ -46,6 +36,7 @@ router.post("/", (req, res) => {
     });
 });
 
+/*
 //SHOW ROUTE
 router.get("/:id", (req, res) => {
     Animal.findById(req.params.id, (err, foundAnimal) => {
@@ -57,7 +48,7 @@ router.get("/:id", (req, res) => {
         }
     });
 });
-
+*/
 // EDIT ROUTE
 router.get("/:id/edit", (req, res) => {
     Animal.findById(req.params.id, (err, foundAnimal) => {
