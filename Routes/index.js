@@ -3,6 +3,12 @@ const router  = express.Router();
 const Animal  = require("../Models/Animal");
 
 
+router.get('/login', (req, res) =>{
+    
+    res.render('login');
+})
+
+
 // RESTful ROUTES
 
 //INDEX ROUTE
@@ -36,7 +42,6 @@ router.post("/", (req, res) => {
     });
 });
 
-/*
 //SHOW ROUTE
 router.get("/:id", (req, res) => {
     Animal.findById(req.params.id, (err, foundAnimal) => {
@@ -48,7 +53,7 @@ router.get("/:id", (req, res) => {
         }
     });
 });
-*/
+
 // EDIT ROUTE
 router.get("/:id/edit", (req, res) => {
     Animal.findById(req.params.id, (err, foundAnimal) => {
