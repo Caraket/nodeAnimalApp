@@ -3,6 +3,12 @@ const router  = express.Router();
 const Animal  = require("../Models/Animal");
 
 
+router.get('/login', (req, res) =>{
+    
+    res.render('login');
+})
+
+
 // RESTful ROUTES
 
 //INDEX ROUTE
@@ -16,16 +22,6 @@ router.get("/", (req, res) =>{
         }
     });
 });
-
-
-function ensureAuthenticated(req, res, next) {
-    if(req.isAuthenticated()){
-        return next();
-    }
-    else{
-        res.redirect('/users/login');
-    }
-}
 
 
 //NEW ROUTE

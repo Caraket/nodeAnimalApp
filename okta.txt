@@ -6,3 +6,5 @@ client secret: 3bhN9OZwpNCGY6FjJKz_075ohSaNWzkZyqspC2bS
 
 
 api token: 00UGeAJU3l2azKUuB5CXDju-9uvsVBIvf78-uV6Ya1
+
+issuer: https://dev-144067.okta.com/oauth2/default
