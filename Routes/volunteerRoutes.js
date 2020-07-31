@@ -30,6 +30,18 @@ router.post("/", (req, res) => {
     });
 });
 
+//SHOW ROUTE
+router.get("/:id", (req, res) => {
+    Volunteer.findById(req.params.id, (err, foundVolunteer) => {
+        if(err){
+            console.log(err);
+            res.redirect("/volunteer");
+        } else{
+            res.render("volunteer/show", {volunteer: foundVolunteer});
+        }
+    });
+});
+
 
 
 module.exports = router;

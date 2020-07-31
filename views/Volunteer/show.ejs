@@ -1,0 +1,36 @@
+<%- include ("../partials/header") %>
+<div class="contained">
+    <div>
+        <div class="jumbotron">
+            <h1><%= volunteer.name %></h1>
+            <h3>Pet ID: <%= volunteer.volunteerId %></h3>
+            
+            <span class="font-weight-bold">Start Date: <% if(volunteer.start != null){ %><%= volunteer.start.toDateString() %></span>
+            <% } %>
+        </div>
+            <div class="ui top attached">
+                <div class="item">
+                <img class="ui centered rounded image" src="<%= volunteer.image %>">
+                <p> Type:  <%= volunteer.type %> </p>
+                <p>Phone: <%= volunteer.phoneNumber %></p>
+                <p>Email: <%= volunteer.email %></p>
+                <p>Address: <%= volunteer.address %></p>
+                <p>Comments: <%= volunteer.body %></p>
+                <div class="content">
+                <span>Created: <%= volunteer.created.toDateString() %></span>
+                
+            </div>
+            <a class="btn btn-primary" href="/<%= volunteer._id %>/edit">Edit</a>
+            <form actions="/volunteer/<%= volunteer._id %>?_method=DELETE" method="POST">
+                <a class="btn btn-danger" href="<%= volunteer._id%>">Delete</a>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+<%- include ("../partials/footer") %>
