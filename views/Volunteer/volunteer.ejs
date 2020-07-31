@@ -1,0 +1,36 @@
+<%- include ("../partials/header"); %>
+
+<h1>dogs</h1>
+    <table class="table table-bordered table-dark">
+        <tr>
+                <th>Type</th>
+                <th>Volunteer ID</th>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Start Date</th>
+                <th>Animal</th>
+        </tr>
+        
+            <% volunteer.forEach(volunteer => { %>
+                
+                    <tr>
+                        <td><%= volunteer.type %></td>
+                        <td><%= volunteer.volunteerId %></td>
+                        <td><%= volunteer.name %></td>
+                        <td><%= volunteer.phoneNumber %></td>
+                        <td><%= volunteer.email %></td>
+                        <td><%= volunteer.address %></td>
+                        <td><%= volunteer.start %></td>
+                        <td>Animals go here</td>
+                    </tr>
+                
+            <% }) %>
+        
+        
+
+        
+    </table>
+    <a class="btn btn-dark" href="/volunteer/New">New Volunteer</a>
+    

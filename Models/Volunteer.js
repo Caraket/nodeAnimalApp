@@ -3,6 +3,7 @@ var mongoose = require("mongoose");
 const volunteerSchema = new mongoose.Schema({
     volunteerId: String,
     name: String,
+    type: String,
     phoneNumber: String,
     email: String,
     address: String,
@@ -11,5 +12,4 @@ const volunteerSchema = new mongoose.Schema({
     body: String,
 });
 
-var volunteerModel = mongoose.model("Foster", volunteerSchema);
-module.exports = volunteerModel;
+module.exports = mongoose.model("Volunteer", volunteerSchema);
