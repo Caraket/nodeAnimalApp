@@ -12,6 +12,7 @@ const app              = express();
 const index = require('./Routes/index');
 const dogs = require('./Routes/dogRoutes');
 const cats = require('./Routes/catRoutes');
+const volunteer = require('./Routes/volunteerRoutes');
 
 // APP CONFIG
 mongoose.set("useUnifiedTopology", true);
@@ -20,6 +21,7 @@ mongoose.connect("mongodb://localhost:27017/animalapp", {useNewUrlParser: true})
 
 
 app.set("view engine", "ejs");
+app.set('views', path.join(__dirname, 'views'));
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -34,6 +36,7 @@ app.use((req, res, next) => {
 })
 
 
+app.use('/volunteer/',volunteer);
 app.use(dogs);
 app.use(cats);
 app.use(index);
