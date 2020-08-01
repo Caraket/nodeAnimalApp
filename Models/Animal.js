@@ -12,6 +12,23 @@ const animalSchema = new mongoose.Schema({
     intake: {type: Date, default: Date.now},
     created: {type: Date, default: Date.now},
     body: String,
+
+    //Cats
+    fvrcp1: Boolean,
+    fvrcp2: Boolean,
+    felineLeukemia: Boolean,
+
+    //Both
+    rabies: Boolean,
+
+    //Dogs
+    dappv: Boolean,
+    dappv2: Boolean,
+    dewormer1: Boolean,
+    dewormer2: Boolean,
+    dewormer3: Boolean,
+    lymes: Boolean
+
 });
 
 module.exports = mongoose.model("Animal", animalSchema);

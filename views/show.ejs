@@ -17,10 +17,24 @@
                 <p>Altered: <%= animal.altered %></p>
                 <p>Alter Date: <%= animal.alteredDate%></p>
                 <p>Comments: <%= animal.body %></p>
+                
+                <% if (animal.species == 'cat') { %>
+                    <label>FVRCP1: </label>
+                    <input type="checkbox">
+                    <br>
+                    <label>FVRCP2: </label>
+                    <input type="checkbox">
+                    <br>
+                    <label>Feline Leukemia: </label>
+                    <input type="checkbox">
+                    <br>
+                    <label>Rabies: </label>
+                    <input type="checkbox">
+                <% } %>
+
                 <div class="content">
                 <span>Created: <%= animal.created.toDateString() %></span>
-                
-            </div>
+                </div>
             <a class="btn btn-primary" href="/<%= animal._id %>/edit">Edit</a>
             <form actions="/animal/<%= animal._id %>?_method=DELETE" method="POST">
                 <a class="btn btn-danger" href="<%= animal._id%>">Delete</a>
