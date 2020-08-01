@@ -19,17 +19,16 @@
                 <p>Comments: <%= animal.body %></p>
                 
                 <% if (animal.species == 'cat') { %>
-                    <label>FVRCP1: </label>
-                    <input type="checkbox">
+                    <p>FVRCP1: <%= animal.fvrcp1 %></p>
                     <br>
                     <label>FVRCP2: </label>
-                    <input type="checkbox">
+                    <input type="checkbox" disabled>
                     <br>
                     <label>Feline Leukemia: </label>
-                    <input type="checkbox">
+                    <input type="checkbox" disabled>
                     <br>
                     <label>Rabies: </label>
-                    <input type="checkbox">
+                    <input type="checkbox" disabled>
                 <% } %>
 
                 <div class="content">
