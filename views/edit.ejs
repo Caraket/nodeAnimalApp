@@ -6,9 +6,12 @@
            <label>Pet ID</label>
            <input type="text" name="animal[petId]" value="<%= animal.petId %>">
        </div>
+
+
        <div class="form-group">
         <label>Species</label>
-            <select name="animal[species]" selected="<% animal.species %>">
+            <select name="animal[species]" id="species" onchange="changeMeds()">
+                <option>Choose One</option>
                 <option value="cat">Cat</option>
                 <option value="dog">Dog</option>
                 <option value="other">Other</option>
@@ -46,19 +49,26 @@
             <input type="date" name="animal[alteredDate]" value="<%= animal.alteredDate %>">
         </div>
 
-        <div class="form-group">
-            <label>FVRCP 1</label>
-            <input type="text" name="animal[fvrcp1]" value="<%= animal.fvrcp1 %>">
+        <div id="cat">
+            
+            <div class="form-group">
+                <label>FVRCP 1</label>
+                <input type="text" name="animal[fvrcp1]" value="<%= animal.fvrcp1 %>">
+            </div>
+
+            <div class="form-group">
+                <label>FVRCP 2</label>
+                <input type="text" name="animal[fvrcp2]" value="<%= animal.fvrcp2 %>" >
+            </div>
+
+            <div class="form-group">
+                <label>Feline Leukemia</label>
+                <input type="text" name="animal[felineLeukemia]" value="<%= animal.felineLeukemia %>">
+            </div>
         </div>
 
-        <div class="form-group">
-            <label>FVRCP 2</label>
-            <input type="text" name="animal[fvrcp2]" value="<%= animal.fvrcp2 %>" >
-        </div>
-
-        <div class="form-group">
-            <label>Feline Leukemia</label>
-            <input type="text" name="animal[felineLeukemia]" value="<%= animal.felineLeukemia %>">
+        <div id="dog">
+            <p>I shouldn't show up.</p>
         </div>
 
         <div class="form-group">
@@ -76,3 +86,28 @@
 </div>
 
 <%- include ("partials/footer") %>
+
+
+<script>
+    function changeMeds(){
+        const cat = document.getElementById('cat');
+        const dog = document.getElementById('dog');
+        const species = document.getElementById('species');
+        if(species.value == 'cat'){
+            cat.style.display = 'block';
+        } 
+        else{
+            cat.style.display = 'none';
+        }
+
+        if(species.value == 'dog'){
+            dog.style.display = 'block';
+        }
+        else{
+            dog.style.display = 'none';
+        }
+    }
+
+    
+
+</script>
