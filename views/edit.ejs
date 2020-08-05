@@ -48,22 +48,22 @@
 
         <div class="form-group">
             <label>FVRCP 1</label>
-            <input type="text" name="animal[fvrcp1]" value="<%+ animal.fvrcp1 %>">
+            <input type="text" name="animal[fvrcp1]" value="<%= animal.fvrcp1 %>">
         </div>
 
         <div class="form-group">
             <label>FVRCP 2</label>
-            <input type="checkbox" name="animal[fvrcp2]" value="<%= animal.fvrcp2 %>">
-        </div>
-
-        <div class="form-group">
-            <label>FVRCP 2</label>
-            <input type="checkbox" name="animal[felineLeukemia]" value="<%= animal.felineLeukemia %>">
+            <input type="text" name="animal[fvrcp2]" value="<%= animal.fvrcp2 %>" >
         </div>
 
         <div class="form-group">
             <label>Feline Leukemia</label>
-            <input type="checkbox" name="animal[felineLeukemia]">
+            <input type="text" name="animal[felineLeukemia]" value="<%= animal.felineLeukemia %>">
+        </div>
+
+        <div class="form-group">
+            <label>Rabies</label>
+            <input type="text" name="animal[rabies]" value="<%= animal.rabies %>">
         </div>
 
 
@@ -71,7 +71,7 @@
             <label>Comments</label>
             <textarea class="form-control" rows="3" name="animal[body]" value="<%= animal.body %>"></textarea>
         </div>
-        <input class="ui grey big basic button" type="submit">
+        <input class="btn btn-dark" type="submit">
     </form>  
 </div>
 

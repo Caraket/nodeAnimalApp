@@ -6,13 +6,13 @@
             <label>Pet ID</label>
             <input type="text" name="animal[petId]" placeholder="PetId">
         </div>
-        <div class="form-group">
+        <div class="form-group" >
             <label>Species</label>
-            <select name="animal[species]">
+        <select name="animal[species]" id="species" onchange="changeMeds()">
                 <option value="cat">Cat</option>
                 <option value="dog">Dog</option>
                 <option value="other">Other</option>
-            </select>>
+            </select>
         </div>
          <div class="form-group">
              <label>Name</label>
@@ -45,22 +45,38 @@
              <label>Altered Date</label>
              <input type="date" name="animal[alteredDate]">
          </div>
+        <div id="cat">
 
-        <div class="form-group">
-            <label>FVRCP 1</label>
-            <select name="animal[fvrcp1]">
-                <option>Yes</option>
-                <option>No</option>
+            <div class="form-group">
+                <label>FVRCP 1</label>
+                <input type="text" name="animal[fvrcp1]" >
+            </div>
+
+            <div class="form-group">
+                <label>FVRCP 2</label>
+                <input type="text" name="animal[fvrcp2]"  >
+            </div>
+
+            <div class="form-group">
+                <label>Feline Leukemia</label>
+                <input type="text" name="animal[felineLeukemia]" >
+            </div>
+        </div>
+
+        <div id="dog">
+            <div class="form-group">
+                <label>DogMeds1</label>
+                <input type="text" name="animal[fvrcp1]" >
+            </div>
+            <div class="form-group">
+                <label>DogMeds2</label>
+                <input type="text" name="animal[fvrcp1]" >
+            </div>
         </div>
 
         <div class="form-group">
-            <label>FVRCP 2</label>
-            <input type="checkbox" name="animal[fvrcp2]">
-        </div>
-
-        <div class="form-group">
-            <label>Feline Leukemia</label>
-            <input type="checkbox" name="animal[felineLeukemia]">
+            <label>Rabies</label>
+            <input type="text" name="animal[rabies]">
         </div>
 
          <div class="form-group">
@@ -75,3 +91,31 @@
 
 
 <%- include ("partials/footer") %>
+
+
+
+
+<script>
+    function changeMeds(){
+        const cat = document.getElementById('cat');
+        const dog = document.getElementById('dog');
+        const species = document.getElementById('species');
+        if(species.value == 'cat'){
+            cat.style.display = 'block';
+        } 
+        else{
+            cat.style.display = 'none';
+        }
+
+        if(species.value == 'dog'){
+            dog.style.display = 'block';
+        }
+        else{
+            dog.style.display = 'none';
+        }
+    }
+
+    
+
+</script>
+

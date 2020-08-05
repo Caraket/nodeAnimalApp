@@ -19,16 +19,13 @@
                 <p>Comments: <%= animal.body %></p>
                 
                 <% if (animal.species == 'cat') { %>
-                    <p>FVRCP1: <%= animal.fvrcp1 %></p>
+                    <span>FVRCP1: <%= animal.fvrcp1 %></span>
                     <br>
-                    <label>FVRCP2: </label>
-                    <input type="checkbox" disabled>
+                    <span>FVRCP2: <%= animal.fvrcp2 %></span>
                     <br>
-                    <label>Feline Leukemia: </label>
-                    <input type="checkbox" disabled>
+                    <span>Feline Leukemia: <%= animal.felineLeukemia %></span>
                     <br>
-                    <label>Rabies: </label>
-                    <input type="checkbox" disabled>
+                    <span>Rabies <%= animal.rabies %></span>
                 <% } %>
 
                 <div class="content">
