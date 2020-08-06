@@ -35,6 +35,7 @@ router.get("/new", (req, res) => {
 router.post("/", (req, res) => {
     Animal.create(req.body.animal, (err, newAnimal) => {
         if(err){
+            console.log(err);
             res.render("new");
         } else{
             res.redirect("/");
@@ -77,9 +78,10 @@ router.put("/:id", (req, res) => {
 });
 
 //Delete Route
-router.delete("/:id/", (req, res) => {
+router.delete("/:id/delete", (req, res) => {
     Animal.findByIdAndDelete(req.params.id, (err, deletedAnimal) => {
         if(err){
+            console.log(err);
             res.redirect("/");
         } else{
             res.redirect("/");

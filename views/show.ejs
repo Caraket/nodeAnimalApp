@@ -11,6 +11,7 @@
             <div class="ui top attached">
                 <div class="item">
                 <img class="ui centered rounded image" src="<%= animal.image %>">
+                <p>Species: <%= animal.species %></p>
                 <p> Sex:  <%= animal.sex %> </p>
                 <p>Breed: <%= animal.breed %></p>
                 <p>Age: <%= animal.age %></p>
@@ -19,16 +20,13 @@
                 <p>Comments: <%= animal.body %></p>
                 
                 <% if (animal.species == 'cat') { %>
-                    <p>FVRCP1: <%= animal.fvrcp1 %></p>
+                    <span>FVRCP1: <%= animal.fvrcp1 %></span>
                     <br>
-                    <label>FVRCP2: </label>
-                    <input type="checkbox" disabled>
+                    <span>FVRCP2: <%= animal.fvrcp2 %></span>
                     <br>
-                    <label>Feline Leukemia: </label>
-                    <input type="checkbox" disabled>
+                    <span>Feline Leukemia: <%= animal.felineLeukemia %></span>
                     <br>
-                    <label>Rabies: </label>
-                    <input type="checkbox" disabled>
+                    <span>Rabies <%= animal.rabies %></span>
                 <% } %>
 
                 <div class="content">
@@ -36,7 +34,7 @@
                 </div>
             <a class="btn btn-primary" href="/<%= animal._id %>/edit">Edit</a>
             <form actions="/animal/<%= animal._id %>?_method=DELETE" method="POST">
-                <a class="btn btn-danger" href="<%= animal._id%>">Delete</a>
+                <a class="btn btn-danger" href="<%= animal._id%>/delete">Delete</a>
             </form>
         </div>
     </div>

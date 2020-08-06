@@ -17,6 +17,7 @@ const volunteer = require('./Routes/volunteerRoutes');
 // APP CONFIG
 mongoose.set("useUnifiedTopology", true);
 mongoose.connect("mongodb://localhost:27017/animalapp", {useNewUrlParser: true});
+mongoose.set('useFindAndModify', false);
 
 
 
