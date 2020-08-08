@@ -1,0 +1,45 @@
+<%- include ("../partials/header"); %>
+
+<h1>Animal</h1>
+    <table class="table table-bordered table-dark">
+        <tr>
+                <th>Pet ID</th>
+                <th>Name</th>
+                <th>Breed</th>
+                <th>Age</th>
+                <th>Sex</th>
+                <th>Altered</th>
+                <th>Alter Date</th>
+                <th>Intake Date</th>
+        </tr>
+        
+            <% animal.forEach(animal => { %>
+                <% if(animal.species == "other"){ %>
+                    <tr>
+                        <td><%= animal.petId %></td>
+                        <td><a href="/<%= animal._id %>"><%= animal.name %></a></td>
+                        <td><%= animal.breed %></td>
+                        <td><%= animal.age %></td>
+                        <td><%= animal.sex %></td>
+                        <td><%= animal.altered %></td>
+                        <% if (animal.alteredDate != null){ %>
+                        <td><%= animal.alteredDate.toDateString() %></td>
+                        <% } %>
+                        <% if (animal.intake != null) {%>
+                        <td><%= animal.intake.toDateString()%></td>
+                        <% } %>
+                    </tr>
+                <% } %>
+            <% }) %>
+        
+        
+
+        
+    </table>
+    <a class="btn btn-dark" href="/New">New Animal</a>
+    
+    
+
+
+
+<%- include ("../partials/footer"); %>

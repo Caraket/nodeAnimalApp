@@ -12,6 +12,7 @@ const app              = express();
 const index = require('./Routes/index');
 const dogs = require('./Routes/dogRoutes');
 const cats = require('./Routes/catRoutes');
+const other = require('./Routes/otherRoute');
 const volunteer = require('./Routes/volunteerRoutes');
 
 // APP CONFIG
@@ -36,8 +37,8 @@ app.use((req, res, next) => {
     next();
 })
 
-
 app.use('/volunteer/',volunteer);
+app.use(other);
 app.use(dogs);
 app.use(cats);
 app.use(index);
