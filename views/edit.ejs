@@ -3,94 +3,156 @@
 
 <div class="contained">
     <form class="form" action="/<%= animal._id %>?_method=PUT" method="POST">
-       <div class="form-group">
+       <div class="form-group control">
            <label>Pet ID</label>
-           <input type="text" name="animal[petId]" value="<%= animal.petId %>">
+           <input class="form-control" type="text" name="animal[petId]" value="<%= animal.petId %>">
        </div>
 
        
-       <div class="form-group">
+       <div class="form-group control">
         <label>Species</label>
-            <select name="animal[species]" id="species" onchange="changeMeds()">
+            <select class="form-control" name="animal[species]" id="species" onchange="changeMeds()">
                 <option value="cat" <%= animal.species === "cat" ? "selected" : "" %>  >Cat</option>
                 <option value="dog" <%= animal.species === "dog" ? "selected" : "" %> >Dog</option>
                 <option value="other" <%= animal.species === "other" ? "selected" : "" %> >Other</option>
             </select>
 
         </div>
-        <div class="form-group">
+        <div class="form-group control">
             <label>Name</label>
-            <input type="text" name="animal[name]" value="<%= animal.name %>">
+            <input class="form-control" type="text" name="animal[name]" value="<%= animal.name %>">
         </div>
-        <div class="form-group">
+        <div class="form-group control">
             <label>Sex</label>
-            <input type="text" name="animal[sex]" value="<%= animal.sex %>">
+            <select class="form-control" name="animal[sex]">
+                <option value="Male" <%= animal.sex === "Male" ? "selected" : "" %> >Male</option>
+                <option value="Female" <%= animal.sex === "Female" ? "selected" : "" %>>Female</option>
+            </select>
         </div>
-        <div class="form-group">
+        <div class="form-group control">
             <label>Breed</label>
-            <input type="text" name="animal[breed]" value="<%= animal.breed %>">
+            <input class="form-control" type="text" name="animal[breed]" value="<%= animal.breed %>">
         </div>
-        <div class="form-group">
+        <div class="form-group control">
             <label>Age</label>
-            <input type="text" name="animal[age]" value="<%= animal.age %>">
+            <input class="form-control" type="number" name="animal[age]" value="<%= animal.age %>">
         </div>
-        <div class="form-group">
+        <div class="form-group control">
             <label>Intake Date</label>
-            <input type="date" name="animal[intake]" value="<%= animal.intake %> ">
+            <input class="form-control" type="date" name="animal[intake]" value="<%= moment(animal.intake).format("Y-MM-DD") %> ">
         </div>
-        <div class="form-group">
+        <div class="form-group control">
             <label>Altered?</label>
             <select class="form-control" name="animal[altered]">
                 <option>Yes</option>
                 <option>No</option>
             </select>
         </div>
-        <div class="form-group">
+        <div class="form-group control">
             <label>Altered Date</label>
-            <input type="date" name="animal[alteredDate]" value="<%= animal.alteredDate %>">
+            <input class="form-control" type="date" name="animal[alteredDate]" value="<%= animal.alteredDate %>">
         </div>
 
-        <div id="cat">
-            
-            <div class="form-group">
-                <label>FVRCP 1</label>
-                <select type="text" name="animal[fvrcp1]"> 
-                    <option value="false" <%= animal.fvrcp1 === false ? "selected" : "" %>>No</option>
-                    <option value="true" <%= animal.fvrcp1 === true ? "selected" : "" %> >Yes</option>
-                </select>
+        <div id="control">
+            <div id="cat">
+                
+                <div class="form-group control">
+                    <label>FVRCP 1</label>
+                    <select class="form-control" name="animal[fvrcp1]"> 
+                        <option value="false" <%= animal.fvrcp1 === false ? "selected" : "" %>>No</option>
+                        <option value="true" <%= animal.fvrcp1 === true ? "selected" : "" %> >Yes</option>
+                    </select>
+                </div>
+
+                <div class="form-group control">
+                    <label>FVRCP 2</label>
+                    <select class="form-control" name="animal[fvrcp2]"> 
+                        <option value="false" <%= animal.fvrcp2 === false ? "selected" : "" %> >No</option>
+                        <option value="true" <%= animal.fvrcp2 === true ? "selected" : "" %> >Yes</option>
+                    </select>
+                </div>
+
+                <div class="form-group control">
+                    <label>Feline Leukemia</label>
+                    <select class="form-control" name="animal[felineLeukemia]"> 
+                        <option value="false" <%= animal.felineLeukemia === false ? "selected" : "" %> >No</option>
+                        <option value="true" <%= animal.felineLeukemia === true ? "selected" : "" %> >Yes</option>
+                    </select>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label>FVRCP 2</label>
-                <select type="text" name="animal[fvrcp2]"> 
-                    <option value="false" <%= animal.fvrcp2 === false ? "selected" : "" %> >No</option>
-                    <option value="true" <%= animal.fvrcp2 === true ? "selected" : "" %> >Yes</option>
+            <div id="dog">
+                <div class="form-group control">
+                    <label>DAPPV</label>
+                    <select class="form-control" name="animal[dappv]"> 
+                        <option value="false" <%= animal.dappv === false ? "selected" : "" %> >No</option>
+                        <option value="true" <%= animal.dappv === true ? "selected" : "" %> >Yes</option>
+                    </select>
+                </div>
+                
+                <div class="form-group control">
+                    <label>DAPPV 2nd</label>
+                    <select class="form-control" name="animal[dappv2]"> 
+                        <option value="false" <%= animal.dappv2 === false ? "selected" : "" %> >No</option>
+                        <option value="true" <%= animal.dappv2 === true ? "selected" : "" %> >Yes</option>
+                    </select>
+                </div>
+                <div class="form-group control">
+                    <label>Dewormer Type:</label>
+                    <select class="form-control" name="animal[wormerType]">
+                        <option value="" <%= animal.wormerType == "" ? "selected" : "" %>>None</option>
+                        <option value="rev" <%= animal.wormerType == 'rev' ? "selected" : "" %>>Revolution</option>
+                        <option value="dron" <%= animal.wormerType == 'dron' ? "selected" : "" %> >Drontal</option>
+                        <option value="pyra" <%= animal.wormerType == 'pyra' ? "selected" : "" %> >Pyrantal</option>
+                        <option value="other" <%= animal.wormerType == 'other' ? "selected" : "" %> >Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group control">
+                <label>Dewormer 1st</label>
+                <select class="form-control" name="animal[dewormer1]"> 
+                    <option value="false" <%= animal.dewormer1 === false ? "selected" : "" %> >No</option>
+                    <option value="true" <%= animal.dewormer1 === true ? "selected" : "" %> >Yes</option>
                 </select>
+                </div>
+                
+                <div class="form-group control">
+                    <label>Dewormer 2nd</label>
+                    <select class="form-control" name="animal[dewormer2]"> 
+                        <option value="false" <%= animal.dewormer2 === false ? "selected" : "" %> >No</option>
+                        <option value="true" <%= animal.dewormer2 === true ? "selected" : "" %> >Yes</option>
+                    </select>
+                </div>
+
+                <div class="form-group control">
+                    <label>Dewormer 3rd</label>
+                    <select class="form-control" name="animal[dewormer3]"> 
+                        <option value="false" <%= animal.dewormer2 === false ? "selected" : "" %> >No</option>
+                        <option value="true" <%= animal.dewormer2 === true ? "selected" : "" %> >Yes</option>
+                    </select>
+                </div>
+
+                <div class="form-group control">
+                    <label>Lymes Disease</label>
+                    <select class="form-control" name="animal[lymes]"> 
+                        <option value="false" <%= animal.lymes === false ? "selected" : "" %> >No</option>
+                        <option value="true" <%= animal.lymes === true ? "selected" : "" %> >Yes</option>
+                    </select>
+                </div>
+
             </div>
 
-            <div class="form-group">
-                <label>Feline Leukemia</label>
-                <select type="text" name="animal[felineLeukemia]"> 
-                    <option value="false" <%= animal.felineLeukemia === false ? "selected" : "" %> >No</option>
-                    <option value="true" <%= animal.felineLeukemia === true ? "selected" : "" %> >Yes</option>
+            <div class="form-group control">
+                <label>Rabies</label>
+                <select class="form-control" name="animal[rabies]"> 
+                    <option value="false" <%= animal.rabies === false ? "selected" : "" %> >No</option>
+                    <option value="true" <%= animal.rabies === true ? "selected" : "" %> >Yes</option>
                 </select>
             </div>
         </div>
 
-        <div id="dog">
-            <p>Dog Meds will go here</p>
-        </div>
 
-        <div class="form-group">
-            <label>Rabies</label>
-            <select type="text" name="animal[rabies]"> 
-                <option value="false" <%= animal.rabies === false ? "selected" : "" %> >No</option>
-                <option value="true" <%= animal.rabies === true ? "selected" : "" %> >Yes</option>
-            </select>
-        </div>
-
-
-        <div class="form-group">
+        <div class="form-group comment-control">
             <label>Comments</label>
             <textarea class="form-control" rows="3" name="animal[body]" value="<%= animal.body %>"></textarea>
         </div>
@@ -134,9 +196,6 @@
             dog.style.display = 'none';
         }
     }
-
-
-    
 
     
 

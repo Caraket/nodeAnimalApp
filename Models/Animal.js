@@ -24,6 +24,7 @@ const animalSchema = new mongoose.Schema({
     //Dogs
     dappv: Boolean,
     dappv2: Boolean,
+    wormerType: String,
     dewormer1: Boolean,
     dewormer2: Boolean,
     dewormer3: Boolean,

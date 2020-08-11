@@ -1,5 +1,6 @@
 const express = require("express");
 const router  = express.Router();
+const moment = require('moment');
 const Animal  = require("../Models/Animal");
 
 
@@ -61,7 +62,9 @@ router.get("/:id/edit", (req, res) => {
         if(err){
             res.redirect("/");
         } else{
-            res.render("edit", {animal: foundAnimal});
+            res.render("edit", {
+                animal: foundAnimal,
+                moment: moment});
         }
     });
 });

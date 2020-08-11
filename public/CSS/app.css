@@ -18,3 +18,11 @@
 .margin-bottom{
     margin-bottom: 50px;
 }
+
+.control{
+    width: 10%;
+}
+
+.comment-control{
+    width: 50%;
+}
