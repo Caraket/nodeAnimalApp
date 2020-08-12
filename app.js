@@ -58,7 +58,7 @@ app.use(session({
 
      app.use(oidc.router)
      app.use('/volunteer/',volunteer);
-     app.use(other);
+     app.use(oidc.ensureAuthenticated(), other);
      app.use(dogs);
      app.use(cats);
      app.use('/', index)

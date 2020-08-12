@@ -8,7 +8,11 @@ router.get("/cats", (req, res) => {
         if(err){
             console.log(err);
         } else{
-            res.render("./Cats/cats", {cats: cats});
+            const { userContext } = req;
+            res.render("./Cats/cats", {
+                cats: cats,
+                userContext
+            });
         }
     });
 });

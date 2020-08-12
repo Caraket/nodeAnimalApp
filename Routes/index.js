@@ -32,7 +32,10 @@ router.get("/", (req, res) =>{
 
 //NEW ROUTE
 router.get("/new", (req, res) => {
-    res.render("new");
+    const { userContext } = req;
+    res.render("new", {
+        userContext
+    });
 });
 
 
