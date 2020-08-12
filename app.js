@@ -21,7 +21,23 @@ mongoose.connect("mongodb://localhost:27017/animalapp", {useNewUrlParser: true})
 mongoose.set('useFindAndModify', false);
 
 
+const oidc = new ExpressOIDC({
+    appBaseUrl: process.env.HOST_URL,
+    issuer: `${process.env.OKTA_ORG_URL}/oauth2/default`,
+    client_id: process.env.OKTA_CLIENT_ID,
+    client_secret: process.env.OKTA_CLIENT_SECRET,
+    redirect_uri: `${process.env.HOST_URL}/callback`,
+    post_logout_redirect_uri: `localhost:3000`,
+    scope: 'openid profile',
+    routes: {
+      loginCallback: {
+        path: '/callback'
+      },
+    }
+  });
 
+
+// View Engine Setup
 app.set("view engine", "ejs");
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static("public"));
@@ -32,16 +48,28 @@ app.use(methodOverride("_method"));
 
 
 
+app.use(session({
+       secret: `asKJijsk8823789sd-dsfhjds`,
+       resave: true,
+       saveUninitialized: false,
+     }))
+    
+
+
+     app.use(oidc.router)
+     app.use('/volunteer/',volunteer);
+     app.use(other);
+     app.use(dogs);
+     app.use(cats);
+     app.use('/', index)
+     
+
 app.use((req, res, next) => {
     res.locals.user = req.user || null;
     next();
 })
 
-app.use('/volunteer/',volunteer);
-app.use(other);
-app.use(dogs);
-app.use(cats);
-app.use(index);
+
 
 
 app.listen(3000, () => {
