@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const router  = express.Router();
 const moment = require('moment');
@@ -18,7 +19,11 @@ router.get("/", (req, res) =>{
         if(err){
             console.log(err);
         } else{
-            res.render("index", {animals: animals});
+            const { userContext } = req;
+            res.render("index", {
+                animals: animals,
+                userContext
+            });
             
         }
     });
