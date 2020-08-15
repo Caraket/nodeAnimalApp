@@ -39,11 +39,10 @@ router.post("/", (req, res) => {
 router.get("/:id", (req, res) => {
     Volunteer.findById(req.params.id, (err, foundVolunteer) => {
         if(err){
-            console.log(err);
             res.redirect("/volunteer");
         } else{
             const { userContext } = req;
-            res.render("volunteer/show", {
+            res.render("./volunteer/show", {
                 volunteer: foundVolunteer,
                 userContext
             });
