@@ -59,7 +59,11 @@ router.get("/:id", (req, res) => {
             console.log(err);
             res.redirect("/");
         } else{
-            res.render("show", {animal: foundAnimal});
+            const { userContext } = req;
+            res.render("show", {
+                animal: foundAnimal,
+                userContext
+            });
         }
     });
 });
