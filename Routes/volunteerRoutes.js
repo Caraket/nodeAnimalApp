@@ -42,7 +42,7 @@ router.get("/:id", (req, res) => {
             res.redirect("/volunteer");
         } else{
             const { userContext } = req;
-            res.render("./volunteer/show", {
+            res.render("/volunteer/show", {
                 volunteer: foundVolunteer,
                 userContext
             });
