@@ -74,9 +74,12 @@ router.get("/:id/edit", (req, res) => {
         if(err){
             res.redirect("/");
         } else{
+            const { userContext } = req;
             res.render("edit", {
                 animal: foundAnimal,
-                moment: moment});
+                moment: moment,
+                userContext
+            });
         }
     });
 });
