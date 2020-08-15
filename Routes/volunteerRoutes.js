@@ -2,7 +2,7 @@ const express = require("express");
 const router  = express.Router();
 const Volunteer    = require("../Models/Volunteer"); 
 
-// Dog Route
+
 router.get("/", (req, res) => {
     Volunteer.find({}, (err, volunteer) => {
         if(err){
@@ -20,7 +20,8 @@ router.get("/", (req, res) => {
 
 //NEW ROUTE
 router.get("/new", (req, res) => {
-    res.render("./Volunteer/new");
+    const { userContext } = req;
+    res.render("./Volunteer/new", {userContext});
 });
 
 //CREATE ROUTE
@@ -41,7 +42,11 @@ router.get("/:id", (req, res) => {
             console.log(err);
             res.redirect("/volunteer");
         } else{
-            res.render("volunteer/show", {volunteer: foundVolunteer});
+            const { userContext } = req;
+            res.render("volunteer/show", {
+                volunteer: foundVolunteer,
+                userContext
+            });
         }
     });
 });
