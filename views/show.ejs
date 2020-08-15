@@ -29,6 +29,16 @@
                     <span>Rabies <%= animal.rabies %></span>
                 <% } %>
 
+                <% if(animal.species == 'dog'){ %>
+                    <p>DAPPV: <%= animal.dappv %></p>
+                    <p>DAPPV 2nd: <%= animal.dappv2 %></p>
+                    <p>Dewormer: <%= animal.wormerType %></p>
+                    <p>Dewormer 1st: <%= animal.dewormer1 %></p>
+                    <p>Dewormer 2nd: <%= animal.dewormer2 %></p>
+                    <p>Dewormer 3rd: <%= animal.dewormer3 %></p>
+                    <p>Lymes Disease: <%= animal.lymes %></p>
+                <% } %>
+
                 <div class="content">
                 <span>Created: <%= animal.created.toDateString() %></span>
                 </div>
