@@ -8,8 +8,8 @@ const animalSchema = new mongoose.Schema({
     breed: String,
     age: {type: Number},
     altered: String,
-    alteredDate: {type: Date},
-    intake: {type: Date, default: Date.now},
+    alteredDate: {type: String},
+    intake: {type: String},
     created: {type: Date, default: Date.now},
     body: String,
 

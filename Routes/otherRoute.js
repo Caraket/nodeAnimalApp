@@ -2,7 +2,7 @@ const express = require("express");
 const router  = express.Router();
 const Dogs    = require("../Models/Animal"); 
 
-// Dog Route
+//Other Route
 router.get("/other", (req, res) => {
     Dogs.find({}, (err, animal) => {
         if(err){
