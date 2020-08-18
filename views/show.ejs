@@ -1,16 +1,16 @@
 <%- include ("partials/header") %>
 <div class="contained">
     <div>
-        <div class="jumbotron">
+        <div class="jumbotron container">
             <h1><%= animal.name %></h1>
             <h3>Pet ID: <%= animal.petId %></h3>
             
-            <span class="font-weight-bold">Intake Date: <% if(animal.intake != null){ %><%= animal.intake.toDateString() %></span>
+            <span class="font-weight-bold">Intake Date: <% if(animal.intake != null){ %><%= animal.intake%></span>
             <% } %>
         </div>
-            <div class="ui top attached">
-                <div class="item">
-                <img class="ui centered rounded image" src="<%= animal.image %>">
+
+            <div class="container">
+                <div class="item dark">
                 <p>Species: <%= animal.species %></p>
                 <p> Sex:  <%= animal.sex %> </p>
                 <p>Breed: <%= animal.breed %></p>
