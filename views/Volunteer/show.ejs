@@ -20,9 +20,9 @@
                 <span>Created: <%= volunteer.created.toDateString() %></span>
                 
             </div>
-            <a class="btn btn-primary" href="/<%= volunteer._id %>/edit">Edit</a>
+            <a class="btn btn-primary" href="/volunteer/<%= volunteer._id %>/edit">Edit</a>
             <form actions="/volunteer/<%= volunteer._id %>?_method=DELETE" method="POST">
-                <a class="btn btn-danger" href="<%= volunteer._id%>">Delete</a>
+                <a class="btn btn-danger" href="/volunteer/<%= volunteer._id%>">Delete</a>
             </form>
         </div>
     </div>

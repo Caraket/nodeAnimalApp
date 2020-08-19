@@ -50,6 +50,30 @@ router.get("/:id", (req, res) => {
     });
 });
 
+// EDIT ROUTE
+router.get("/:id/edit", (req, res) => {
+    Volunteer.findById(req.params.id, (err, foundVolunteer) => {
+        if(err){
+            res.redirect("/");
+        } else{
+            const { userContext } = req;
+            res.render("Volunteer/edit", {
+                volunteer: foundVolunteer,
+                userContext
+            });
+        }
+    });
+});
 
+//UPDATE ROUTE
+router.put("/:id", (req, res) => {
+    Volunteer.findByIdAndUpdate(req.params.id, req.body.volunteer, (err, foundVolunteer) => {
+        if(err){
+            res.redirect("/");
+        } else{
+            res.redirect("/" + req.params.id);
+        }
+    });
+});
 
 module.exports = router;

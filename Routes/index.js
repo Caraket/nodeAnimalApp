@@ -96,13 +96,13 @@ router.put("/:id", (req, res) => {
 });
 
 //Delete Route
-router.delete("/:id/delete", (req, res) => {
+router.delete("/:id", (req, res) => {
     Animal.findByIdAndDelete(req.params.id, (err, deletedAnimal) => {
         if(err){
             console.log(err);
             res.redirect("/");
         } else{
-            res.redirect("/");
+            res.redirect("/" + req.params.id);
         }
     })
 });

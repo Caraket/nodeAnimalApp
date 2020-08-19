@@ -1,0 +1,50 @@
+<%- include ("../partials/header"); %>
+
+<div class="contained">
+    <form action="/volunteer/<%= volunteer._id%>?_method=PUT" method="POST">
+        <div class="form-group">
+            <label>Volunteer ID</label>
+            <input type="text" name="volunteer[volunteerId]" placeholder="Volunteer Id">
+        </div>
+        <div class="form-group">
+            <label>Volunteer Type</label>
+            <select name="volunteer[type]">
+                <option value="foster" <%= volunteer.type === 'foster' ? 'selected' : "" %>>Foster</option>
+                <option value="volunteer" <%= volunteer.type === 'volunteer' ? 'selected' : "" %>>Volunteer</option>
+                <option value="both" <%= volunteer.type === 'both' ? 'selected' : "" %>>Foster/Volunteer</option>
+            </select>
+        </div>
+         <div class="form-group control">
+             <label>Name</label>
+             <input class="form-control" type="text" name="volunteer[name]" placeholder="Name">
+         </div>
+         <div class="form-group control">
+             <label>Phone Number</label>
+             <input class="form-control" type="text" name="volunteer[phoneNumber]" placeholder="Phone Number">
+         </div>
+         <div class="form-group control">
+             <label>Email</label>
+             <input class="form-control" type="email" name="volunteer[email]" placeholder="Email">
+         </div>
+         <div class="form-group control">
+             <label>Address</label>
+             <input class="form-control" type="text" name="volunteer[address]" placeholder="Address">
+         </div>
+         <div class="form-group control">
+             <label>Start Date</label>
+             <input class="form-control" type="date" name="volunteer[start]">
+         </div>
+         
+         
+         <div class="form-group">
+             <label>Comments</label>
+             <textarea class="form-control" rows="3" name="volunteer[body]"></textarea>
+         </div>
+        <input class="btn btn-primary" type="submit">
+    </form>  
+</div>
+
+
+
+
+<%- include ("../partials/footer") %>
