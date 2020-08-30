@@ -6,11 +6,11 @@ const animalSchema = new mongoose.Schema({
     name: String,
     sex: String,
     breed: String,
-    age: {type: Number},
+    age: { type: Number },
     altered: String,
-    alteredDate: {type: String},
+    alteredDate: { type: String },
     intake: String,
-    created: {type: Date, default: Date.now},
+    created: { type: Date, default: Date.now },
     body: String,
 
     //Cats

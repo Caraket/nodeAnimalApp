@@ -1,38 +1,38 @@
 <%- include ("../partials/header"); %>
-    <table class="table table-bordered table-dark">
-        <tr>
-                <th>Pet ID</th>
-                <th>Name</th>
-                <th>Breed</th>
-                <th>Age</th>
-                <th>Sex</th>
-                <th>Altered</th>
-                <th>Alter Date</th>
-                <th>Intake Date</th>
-        </tr>
-        
-            <% cats.forEach(cat => { %>
-                <% if (cat.species == "cat"){ %>
-                    <tr>
-                        <td><%= cat.petId %></td>
-                        <td><a href="/<%= cat._id %>"><%= cat.name %></a></td>
-                        <td><%= cat.breed %></td>
-                        <td><%= cat.age %></td>
-                        <td><%= cat.sex %></td>
-                        <td><%= cat.altered %></td>
-                        <td><%= cat.alteredDate %></td>
-                        <td><%= cat.intake %></td>
-                    </tr>
-                <% } %>
-            <% }) %>
-        
-        
+<table class="table table-bordered table-striped contained">
+    <tr>
+        <th>Pet ID</th>
+        <th>Name</th>
+        <th>Breed</th>
+        <th>Age</th>
+        <th>Sex</th>
+        <th>Altered</th>
+        <th>Alter Date</th>
+        <th>Intake Date</th>
+    </tr>
 
-        
-    </table>
-    <a class="btn btn-dark" href="/new">New Cat</a>
-    
-    
+    <% cats.forEach(cat => { %>
+    <% if (cat.species == "cat"){ %>
+    <tr>
+        <td><%= cat.petId %></td>
+        <td><a href="/<%= cat._id %>"><%= cat.name %></a></td>
+        <td><%= cat.breed %></td>
+        <td><%= cat.age %></td>
+        <td><%= cat.sex %></td>
+        <td><%= cat.altered %></td>
+        <td><%= cat.alteredDate %></td>
+        <td><%= cat.intake %></td>
+    </tr>
+    <% } %>
+    <% }) %>
+
+
+
+
+</table>
+<a class="btn btn-dark" href="/new">New Cat</a>
+
+
 
 
 

@@ -1,12 +1,27 @@
 require('dotenv').config();
 const express = require("express");
-const router  = express.Router();
+const router = express.Router();
 const moment = require('moment');
-const Animal  = require("../Models/Animal");
+const fs = require('fs');
+const path = require('path');
+const multer = require('multer');
+const Animal = require("../Models/Animal");
+
+var storage = multer.diskStorage({
+    destination: (req, res, cb) => {
+        cb(null, 'images');
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now());
+    }
+});
+
+var upload = multer({ storage: storage });
 
 
-router.get('/login', (req, res) =>{
-    
+
+router.get('/login', (req, res) => {
+
     res.render('login');
 })
 
@@ -14,17 +29,17 @@ router.get('/login', (req, res) =>{
 // RESTful ROUTES
 
 //INDEX ROUTE
-router.get("/", (req, res) =>{
+router.get("/", (req, res) => {
     Animal.find({}, (err, animals) => {
-        if(err){
+        if (err) {
             console.log(err);
-        } else{
+        } else {
             const { userContext } = req;
             res.render("index", {
                 animals: animals,
                 userContext
             });
-            
+
         }
     });
 });
@@ -41,12 +56,12 @@ router.get("/new", (req, res) => {
 
 
 //CREATE ROUTE
-router.post("/", (req, res) => {
+router.post("/", upload.single('image'), (req, res) => {
     Animal.create(req.body.animal, (err, newAnimal) => {
-        if(err){
+        if (err) {
             console.log(err);
             res.render("new");
-        } else{
+        } else {
             res.redirect("/");
         }
     });
@@ -55,13 +70,14 @@ router.post("/", (req, res) => {
 //SHOW ROUTE
 router.get("/:id", (req, res) => {
     Animal.findById(req.params.id, (err, foundAnimal) => {
-        if(err){
+        if (err) {
             console.log(err);
             res.redirect("/");
-        } else{
+        } else {
             const { userContext } = req;
             res.render("show", {
-                animal: foundAnimal,
+                animal:
+                    foundAnimal,
                 userContext
             });
         }
@@ -71,9 +87,9 @@ router.get("/:id", (req, res) => {
 // EDIT ROUTE
 router.get("/:id/edit", (req, res) => {
     Animal.findById(req.params.id, (err, foundAnimal) => {
-        if(err){
+        if (err) {
             res.redirect("/");
-        } else{
+        } else {
             const { userContext } = req;
             res.render("edit", {
                 animal: foundAnimal,
@@ -87,9 +103,9 @@ router.get("/:id/edit", (req, res) => {
 //UPDATE ROUTE
 router.put("/:id", (req, res) => {
     Animal.findByIdAndUpdate(req.params.id, req.body.animal, (err, updatedAnimal) => {
-        if(err){
+        if (err) {
             res.redirect("/");
-        } else{
+        } else {
             res.redirect("/" + req.params.id);
         }
     });
@@ -98,10 +114,10 @@ router.put("/:id", (req, res) => {
 //Delete Route
 router.delete("/:id", (req, res) => {
     Animal.findByIdAndDelete(req.params.id, (err, deletedAnimal) => {
-        if(err){
+        if (err) {
             console.log(err);
             res.redirect("/");
-        } else{
+        } else {
             res.redirect("/" + req.params.id);
         }
     })
