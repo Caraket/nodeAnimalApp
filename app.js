@@ -7,6 +7,10 @@ const expressSanitizer = require("express-sanitizer");
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 const mongoose = require("mongoose");
+const multer = require('multer');
+const GridFsStorage = require('multer-gridfs-storage');
+const Grid = require('gridfs-stream');
+const crypto = require('crypto');
 const app = express();
 
 const index = require('./Routes/index');
@@ -14,12 +18,15 @@ const dogs = require('./Routes/dogRoutes');
 const cats = require('./Routes/catRoutes');
 const other = require('./Routes/otherRoute');
 const volunteer = require('./Routes/volunteerRoutes');
+const { resolve } = require("path");
+
+//Mongo URI
+const mongoURI = 'mongodb://localhost:27017/animalapp';
+
 
 // APP CONFIG
-mongoose.set("useUnifiedTopology", true);
-mongoose.connect("mongodb://localhost:27017/animalapp", { useNewUrlParser: true });
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set('useFindAndModify', false);
-
 
 const oidc = new ExpressOIDC({
   appBaseUrl: process.env.HOST_URL,
@@ -69,9 +76,9 @@ app.use((req, res, next) => {
   next();
 })
 
+const port = 3000;
 
 
-
-app.listen(3000, () => {
-  console.log("App is listening on port 3000");
+app.listen(port, () => {
+  console.log(`App is listening on port ${port}`);
 });

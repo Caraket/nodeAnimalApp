@@ -7,6 +7,7 @@
 <table class="table table-bordered table-striped contained">
   <tr>
     <th>Pet ID</th>
+    <th>Image</th>
     <th>Name</th>
     <th>Breed</th>
     <th>Age</th>
@@ -19,6 +20,7 @@
   <% animals.forEach(animal => { %>
   <tr>
     <td><%= animal.petId %></td>
+    <td><img src="<%= animal.image %>"></td>
     <td><a href="/<%= animal._id %>"><%= animal.name %></a></td>
     <td><%= animal.breed %></td>
     <td><%= animal.age %></td>

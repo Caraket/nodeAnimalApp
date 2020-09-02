@@ -5,18 +5,32 @@ const moment = require('moment');
 const fs = require('fs');
 const path = require('path');
 const multer = require('multer');
-const Animal = require("../Models/Animal");
 
-var storage = multer.diskStorage({
-    destination: (req, res, cb) => {
-        cb(null, 'images');
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, './images');
     },
     filename: (req, file, cb) => {
-        cb(null, file.fieldname + '-' + Date.now());
+        cb(null, file.filename);
     }
 });
 
-var upload = multer({ storage: storage });
+const fileFilter = (req, file, cb) => {
+    if (file.mimeType === 'image/*') {
+        cb(null, true);
+    } else {
+        cb(null, false);
+    }
+}
+const upload = multer({
+    storage: storage, limits: {
+        fileSize: 1024 * 1024 * 5
+    },
+    fileFilter: fileFilter
+});
+const Animal = require("../Models/Animal");
+
+
 
 
 
@@ -56,10 +70,10 @@ router.get("/new", (req, res) => {
 
 
 //CREATE ROUTE
-router.post("/", upload.single('image'), (req, res) => {
+router.post("/", upload.single('images'), upload.single('image'), (req, res) => {
     Animal.create(req.body.animal, (err, newAnimal) => {
         if (err) {
-            console.log(err);
+
             res.render("new");
         } else {
             res.redirect("/");
