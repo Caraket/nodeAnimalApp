@@ -4,51 +4,51 @@
         <div class="jumbotron container">
             <h1><%= animal.name %></h1>
             <h3>Pet ID: <%= animal.petId %></h3>
-            
+
             <span class="font-weight-bold">Intake Date: <% if(animal.intake != null){ %><%= animal.intake%></span>
             <% } %>
         </div>
 
-            <div class="container">
-                <div class="item dark">
+        <div class="container">
+            <div class="item dark">
                 <p>Species: <%= animal.species %></p>
-                <p> Sex:  <%= animal.sex %> </p>
+                <p> Sex: <%= animal.sex %> </p>
                 <p>Breed: <%= animal.breed %></p>
                 <p>Age: <%= animal.age %></p>
                 <p>Altered: <%= animal.altered %></p>
                 <p>Alter Date: <%= animal.alteredDate%></p>
                 <p>Comments: <%= animal.body %></p>
-                
+
                 <% if (animal.species == 'cat') { %>
-                    <span>FVRCP1: <%= animal.fvrcp1 %></span>
-                    <br>
-                    <span>FVRCP2: <%= animal.fvrcp2 %></span>
-                    <br>
-                    <span>Feline Leukemia: <%= animal.felineLeukemia %></span>
-                    <br>
-                    <span>Rabies <%= animal.rabies %></span>
+                <span>FVRCP1: <%= animal.fvrcp1 %></span>
+                <br>
+                <span>FVRCP2: <%= animal.fvrcp2 %></span>
+                <br>
+                <span>Feline Leukemia: <%= animal.felineLeukemia %></span>
+                <br>
+                <span>Rabies <%= animal.rabies %></span>
                 <% } %>
 
                 <% if(animal.species == 'dog'){ %>
-                    <p>DAPPV: <%= animal.dappv %></p>
-                    <p>DAPPV 2nd: <%= animal.dappv2 %></p>
-                    <p>Dewormer: <%= animal.wormerType %></p>
-                    <p>Dewormer 1st: <%= animal.dewormer1 %></p>
-                    <p>Dewormer 2nd: <%= animal.dewormer2 %></p>
-                    <p>Dewormer 3rd: <%= animal.dewormer3 %></p>
-                    <p>Lymes Disease: <%= animal.lymes %></p>
+                <p>DAPPV: <%= animal.dappv %></p>
+                <p>DAPPV 2nd: <%= animal.dappv2 %></p>
+                <p>Dewormer: <%= animal.wormerType %></p>
+                <p>Dewormer 1st: <%= animal.dewormer1 %></p>
+                <p>Dewormer 2nd: <%= animal.dewormer2 %></p>
+                <p>Dewormer 3rd: <%= animal.dewormer3 %></p>
+                <p>Lymes Disease: <%= animal.lymes %></p>
                 <% } %>
 
                 <div class="content">
-                <span>Created: <%= animal.created.toDateString() %></span>
+                    <span>Created: <%= animal.created.toDateString() %></span>
                 </div>
-            <a class="btn btn-primary" href="/<%= animal._id %>/edit">Edit</a>
-            <form actions="/<%= animal._id %>?_method=DELETE" method="POST">
-                <a class="btn btn-danger" href="/<%= animal._id %>">Delete</a>
-            </form>
+                <a class="btn btn-primary" href="/<%= animal._id %>/edit">Edit</a>
+                <form id="delete-form" action="/<%=animal._id%>/?_method=DELETE" method="POST">
+                    <input type="submit" class="btn btn-xs btn-danger" value="Delete">
+                </form>
+            </div>
         </div>
     </div>
-</div>
 </div>
 
 

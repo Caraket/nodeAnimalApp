@@ -125,16 +125,15 @@ router.put("/:id", (req, res) => {
     });
 });
 
-//Delete Route
-router.delete("/:id", (req, res) => {
-    Animal.findByIdAndDelete(req.params.id, (err, deletedAnimal) => {
+// DESTROY  Route
+router.delete("/:id/", function (req, res) {
+    Animal.findByIdAndRemove(req.params.id, function (err) {
         if (err) {
-            console.log(err);
             res.redirect("/");
         } else {
-            res.redirect("/" + req.params.id);
+            res.redirect("/");
         }
-    })
+    });
 });
 
 module.exports = router;

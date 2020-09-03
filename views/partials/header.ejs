@@ -1,49 +1,56 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Animal App</title>
-        <link rel="stylesheet" type="text/css" href="/CSS/app.css">
-        <link rel="stylesheet" type="text/css" href="/CSS/bootstrap.min.css">
-        <link href="https://global.oktacdn.com/okta-signin-widget/4.1.4/css/okta-sign-in.min.css" type="text/css" rel="stylesheet"/>
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark margin-bottom">
-            <a class="navbar-brand" href="/">Great Tails Animal Rescue</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item active">
-                  <a class="nav-link" href="/">Dashboard <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/dogs">Dogs</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/cats">Cats</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/other">Other</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/volunteer">Volunteers</a>
-                </li>
 
-                <% if(!userContext){ %>
-                  <a class="nav-item nav-link" href="/login">Log In</a>
-                <% } %>
+<head>
+  <title>Animal App</title>
+  <link rel="stylesheet" type="text/css" href="/CSS/app.css">
+  <link rel="stylesheet" type="text/css" href="/CSS/bootstrap.min.css">
+  <link href="https://global.oktacdn.com/okta-signin-widget/4.1.4/css/okta-sign-in.min.css" type="text/css"
+    rel="stylesheet" />
+</head>
 
-                <% if(userContext){ %>
-                  <form method="POST" action="/logout">
-                    <button type="submit" class="btn btn-link nav-item nav-link">Logout</button>
-                  </form>
-                <% } %>
-                
-               
-                
-                
-              </ul>
-            </div>
-          </nav>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark margin-bottom">
+    <a class="navbar-brand" href="/">Great Tails Animal Rescue</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/dogs">Dogs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/cats">Cats</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/other">Other</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/volunteer">Volunteers</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <% if(!userContext){ %>
+        <li class="nav-item">
+          <a class="nav-item nav-link" href="/login">Log In</a>
+        </li>
+        <% } %>
 
+
+        <% if(userContext){ %>
+        <form method="POST" action="/logout">
+          <button type="submit" class="btn btn-link nav-item nav-link">Logout</button>
+        </form>
+        <% } %>
+      </ul>
+
+
+
+
+    </div>
+  </nav>
