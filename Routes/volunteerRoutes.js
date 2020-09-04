@@ -1,13 +1,13 @@
 const express = require("express");
-const router  = express.Router();
-const Volunteer    = require("../Models/Volunteer"); 
+const router = express.Router();
+const Volunteer = require("../Models/Volunteer");
 
 
 router.get("/", (req, res) => {
     Volunteer.find({}, (err, volunteer) => {
-        if(err){
+        if (err) {
             console.log(err);
-        } else{
+        } else {
             const { userContext } = req;
             res.render("./Volunteer/volunteer", {
                 volunteer: volunteer,
@@ -21,15 +21,15 @@ router.get("/", (req, res) => {
 //NEW ROUTE
 router.get("/new", (req, res) => {
     const { userContext } = req;
-    res.render("./Volunteer/new", {userContext});
+    res.render("./Volunteer/new", { userContext });
 });
 
 //CREATE ROUTE
 router.post("/", (req, res) => {
     Volunteer.create(req.body.volunteer, (err, newVolunteer) => {
-        if(err){
+        if (err) {
             res.render("/volunteer/new");
-        } else{
+        } else {
             res.redirect("/volunteer");
         }
     });
@@ -38,9 +38,9 @@ router.post("/", (req, res) => {
 //SHOW ROUTE
 router.get("/:id", (req, res) => {
     Volunteer.findById(req.params.id, (err, foundVolunteer) => {
-        if(err){
+        if (err) {
             res.redirect("/volunteer");
-        } else{
+        } else {
             const { userContext } = req;
             res.render("Volunteer/show", {
                 volunteer: foundVolunteer,
@@ -53,9 +53,9 @@ router.get("/:id", (req, res) => {
 // EDIT ROUTE
 router.get("/:id/edit", (req, res) => {
     Volunteer.findById(req.params.id, (err, foundVolunteer) => {
-        if(err){
+        if (err) {
             res.redirect("/");
-        } else{
+        } else {
             const { userContext } = req;
             res.render("Volunteer/edit", {
                 volunteer: foundVolunteer,
@@ -68,10 +68,20 @@ router.get("/:id/edit", (req, res) => {
 //UPDATE ROUTE
 router.put("/:id", (req, res) => {
     Volunteer.findByIdAndUpdate(req.params.id, req.body.volunteer, (err, foundVolunteer) => {
-        if(err){
-            res.redirect("/");
-        } else{
-            res.redirect("/" + req.params.id);
+        if (err) {
+            res.redirect("/volunteer");
+        } else {
+            res.redirect("/volunteer" + req.params.id);
+        }
+    });
+});
+
+router.delete("/:id/", function (req, res) {
+    Volunteer.findByIdAndRemove(req.params.id, function (err) {
+        if (err) {
+            res.redirect("/volunteer");
+        } else {
+            res.redirect("/volunteer");
         }
     });
 });
