@@ -5,7 +5,7 @@ const animalSchema = new mongoose.Schema({
     species: String,
     name: String,
     image: String,
-    sex: String,
+    sex: {type: String},
     breed: String,
     age: { type: Number },
     altered: String,

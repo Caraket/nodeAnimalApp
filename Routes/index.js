@@ -5,31 +5,35 @@ const moment = require('moment');
 const fs = require('fs');
 const path = require('path');
 const multer = require('multer');
+const Animal = require("../Models/Animal");
+const { Mongoose } = require('mongoose');
+
 
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, './images');
+    destination: function(req, file, cb) {
+        cb(null, './uploads/');
     },
-    filename: (req, file, cb) => {
-        cb(null, file.filename);
+    filename: function(req, file, cb){
+        cb(null, new Date().toISOString() + file.originalname);
     }
 });
 
-const fileFilter = (req, file, cb) => {
-    if (file.mimeType === 'image/*') {
+const filefilter = (req, file, cb) => {
+    // reject a file
+    if(file.mimetype === "image/jpeg" || file.mimetype === "image/png"){
         cb(null, true);
-    } else {
+
+    }else{
         cb(null, false);
     }
+    //accept a file
 }
-const upload = multer({
-    storage: storage, limits: {
-        fileSize: 1024 * 1024 * 5
-    },
-    fileFilter: fileFilter
-});
-const Animal = require("../Models/Animal");
 
+const upload = multer({storage: storage, limits: {
+    fileSize: 1024 * 1024 * 8
+},
+    fileFilter: filefilter
+});
 
 
 
@@ -70,12 +74,15 @@ router.get("/new", (req, res) => {
 
 
 //CREATE ROUTE
-router.post("/", upload.single('images'), upload.single('image'), (req, res) => {
+router.post("/", upload.single('animalImage'),(req, res) => {
     Animal.create(req.body.animal, (err, newAnimal) => {
         if (err) {
 
             res.render("new");
         } else {
+            const animal = new Animal({
+                image: req.file.path
+            })
             res.redirect("/");
         }
     });
