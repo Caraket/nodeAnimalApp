@@ -46,9 +46,11 @@
                 <div class="content">
                     <span>Created: <%= animal.created.toDateString() %></span>
                 </div>
+                
                 <a class="btn btn-primary" href="/<%= animal._id %>/edit">Edit</a>
+                
                 <form id="delete-form" action="/<%=animal._id%>/?_method=DELETE" method="POST">
-                    <input type="submit" class="btn btn-xs btn-danger" value="Delete">
+                    <input onclick="return confirm('Are you sure you want to delete?')" type="submit" class="btn btn-xs btn-danger" value="Delete">
                 </form>
             </div>
         </div>
