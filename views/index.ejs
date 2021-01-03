@@ -20,7 +20,8 @@
   <% animals.forEach(animal => { %>
   <tr>
     <td><%= animal.petId %></td>
-    <td><img src="<%= animal.image %>"></td>
+    <td> <img src="data:image/<%=animal.img.contentType%>;base64,
+      <%=animal.img.data.toString('base64')%>"> </td>
     <td><a href="/<%= animal._id %>"><%= animal.name %></a></td>
     <td><%= animal.breed %></td>
     <td><%= animal.age %></td>

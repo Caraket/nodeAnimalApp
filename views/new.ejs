@@ -2,7 +2,7 @@
 
 <div class="contained">
 
-    <form action="/" method="POST" name="image">
+    <form action="/" method="POST" enctype="multipart/form-data">
         <div class="form-group control">
             <label>Pet ID</label>
             <input class="form-control" type="text" name="animal[petId]" placeholder="PetId">
@@ -18,14 +18,14 @@
 
     
         <div class="form-group control">
-            <Label>Image</Label>
-            <input class="form-control" type="file" name="animal[image]">
+            <Label for="image">Image</Label>
+            <input type="file" id="image" name="image" value="" required>
 
         </div>
 
         <div class="form-group control">
             <label>Name</label>
-            <input class="form-control" type="text" name="animal[name]" placeholder="Name">
+            <input class="form-control" type="text" name="animal[name]" placeholder="Name" required>
         </div>
         <div class="form-group control">
             <label>Sex</label>
@@ -44,7 +44,7 @@
         </div>
         <div class="form-group control" id="datepicker">
             <label>Intake Date</label>
-            <input class="form-control" type="text" name="animal[intake]" placeholder="mm/dd/yyyy">
+            <input class="form-control" type="text" name="animal[intake]" placeholder="mm/dd/yyyy" required>
         </div>
         <div class="form-group control">
             <label>Altered?</label>

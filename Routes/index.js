@@ -6,42 +6,32 @@ const fs = require('fs');
 const path = require('path');
 const multer = require('multer');
 const Animal = require("../Models/Animal");
-const { Mongoose } = require('mongoose');
-
-
-const storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        cb(null, './uploads/');
-    },
-    filename: function(req, file, cb){
-        cb(null, new Date().toISOString() + file.originalname);
-    }
-});
-
-const filefilter = (req, file, cb) => {
-    // reject a file
-    if(file.mimetype === "image/jpeg" || file.mimetype === "image/png"){
-        cb(null, true);
-
-    }else{
-        cb(null, false);
-    }
-    //accept a file
-}
-
-const upload = multer({storage: storage, limits: {
-    fileSize: 1024 * 1024 * 8
-},
-    fileFilter: filefilter
-});
-
-
-
+const mongoose = require('mongoose');
 
 router.get('/login', (req, res) => {
 
     res.render('login');
 })
+
+
+
+
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'Routes/uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    }
+});
+
+var upload = multer({ storage: storage });
+
+
+
+
+
+
 
 
 // RESTful ROUTES
@@ -74,16 +64,30 @@ router.get("/new", (req, res) => {
 
 
 //CREATE ROUTE
-router.post("/", upload.single('animalImage'),(req, res) => {
+router.post("/", upload.single('image'), (req, res) => {
     Animal.create(req.body.animal, (err, newAnimal) => {
         if (err) {
 
             res.render("new");
         } else {
-            const animal = new Animal({
-                image: req.file.path
+            var obj = {
+                img: {
+                    data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+                    contentType: 'image/jpg'
+                }
+            }
+
+            Animal.update(obj, (err, item) => {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    res.redirect("/");
+
+                }
             })
-            res.redirect("/");
+
+
         }
     });
 });

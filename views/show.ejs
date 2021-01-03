@@ -4,6 +4,10 @@
         <div class="jumbotron container">
             <h1><%= animal.name %></h1>
             <h3>Pet ID: <%= animal.petId %></h3>
+            <div>
+               <img src="data:image/<%=animal.img.contentType%>;base64,
+      <%=animal.img.data.toString('base64')%>">
+            </div>
 
             <span class="font-weight-bold">Intake Date: <% if(animal.intake != null){ %><%= animal.intake%></span>
             <% } %>
