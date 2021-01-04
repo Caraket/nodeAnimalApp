@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Animal Application</title>
+  <link rel="stylesheet" type="text/css" href="/CSS/app.css">
+  <link rel="stylesheet" type="text/css" href="/CSS/bootstrap.min.css">
+  <link href="https://global.oktacdn.com/okta-signin-widget/4.1.4/css/okta-sign-in.min.css" type="text/css"
+    rel="stylesheet" />
+</head>
+
+    <body>
+        <form action="/application" method="POST">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input class="form-control" type="text" name="name" placeholder="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="otherName">Other names used(including maiden name)</label>
+                <input class="form-control" type="text" name="otherName" placeholder="Other Names" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="DOB">Date of Birth</label>
+                <input class="form-control" type="date" name="DOB" placeholder="Date of birth" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Phone">Phone Number</label>
+                <input class="form-control" type="tel" name="Phone" placeholder="Phone #" required>
+            </div>
+           
+            <div class="form-group">
+                <label for="Email">Email Address</label>
+                <input class="form-control" type="email" name="Email" placeholder="bob@email.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="Address">Home Address</label>
+                <input class="form-control" type="text" name="Address" placeholder="555 Willow Lane, Boulder, CO 80301" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="petName">What is the name of the pet you would like to adopt?</label>
+                <input class="form-control" type="text" name="petName" placeholder="Shadow" >
+            </div>
+            
+            <div class="form-group">
+                <label for="unsure">If you do not have a specific adoptable pet in mind, what type of pet are you looking for?(species, gender, age, size)</label>
+                <textarea class="form-control" name="unsure" placeholder="Add text here"></textarea>
+            </div>
+
+
+            <input class="btn btn-primary" type="submit">
+        </form>
+    </body>
+</html>
