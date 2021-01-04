@@ -50,7 +50,162 @@
                 <label for="unsure">If you do not have a specific adoptable pet in mind, what type of pet are you looking for?(species, gender, age, size)</label>
                 <textarea class="form-control" name="unsure" placeholder="Add text here"></textarea>
             </div>
+            <div class="form-group">
+                <span>Number of other adults in the household:</span>
+                <table class="table table-bordered table-striped contained">
+                    <tr>
+                        <td>Name:</td>
+                        <td>Date of Birth</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text"></td>
+                        <td><input type="date"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text"></td>
+                        <td><input type="date"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text"></td>
+                        <td><input type="date"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text"></td>
+                        <td><input type="date"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text"></td>
+                        <td><input type="date"></td>
+                    </tr>
+                </table>
 
+            </div>
+            <div class="form-group ">
+                <label>Do you have any children under the age of 5 years? If so, how many and please list ages.(no names)</label>
+                <select class="form-control" name="hmchildren">
+                    <option value="false">No</option>
+                    <option value="true">Yes</option>
+                </select>
+                <textarea cols="100" placeholder="How many children under 5 years?"></textarea>
+            </div>
+
+            <div class="form-group">
+                <Label>How long have you lived at your current address?</Label>
+                <input class="form-control" type="number">years.
+                
+            </div>
+            <div class="form-group">
+                <Label>Do you have steady employment?</Label>
+                <select class="form-control" name="steadyEmployment">
+                    <option value="">Please choose one</option>
+                    <option value="false">No</option>
+                    <option value="true">Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <Label>Why do you want to adopt this pet?</Label>
+                <textarea class="form-control" cols="50" name="whyAdopt"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <Label>What personality are you seeking?</Label>
+                <textarea class="form-control" cols="50" name="personality"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <Label>What pet behaviors are unacceptable to you and how would you address them?</Label>
+                <textarea class="form-control" cols="50" name="unacceptable"></textarea>
+            </div>
+
+            <div class="form-group">
+                <Label>Do you rent or own?</Label>
+                <select class="form-control" name="ownorRent">
+                    <option value="">Please choose one</option>
+                    <option value="Rent">Rent</option>
+                    <option value="Own">Own</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <Label>If rent, have you check with your landlord or city ordinances?</Label>
+                <span class="font-weight-bold font-italic">Great Tails Animal Rescue reserves the right to schedule a phone or in-person interview with your landlord prior to any adoption being finalized.</span>
+                <textarea class="form-control" cols="50" name="checkWithLord"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <Label>Landlord/Management Company</Label>
+                <input class="form-control" type="text" name="landLord" >
+            </div>
+
+            <div class="form-group">
+                <Label>If you have pets what species, age, and breeds are they and are they up to date on vaccines and spayed or neutered?</Label>
+                <textarea class="form-control" cols="50" name="otherPets"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <Label>Do you know if your current pet(s) get along well with other pets?</Label>
+                <textarea class="form-control" cols="50" name="getAlong"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <Label>If you currently have no pets, please list which type of animals you have owned in the past and approximately how long ago.</Label>
+                <textarea class="form-control" cols="50" name="pastAnimals"></textarea>
+            </div>
+
+            <div class="form-group">
+                <Label>What is your current veterinary clinic?</Label>
+                <input class="form-control" type="text" name="currentVet" >
+            </div>
+
+            <div class="form-group">
+                <Label>Where will the adopted animal sleep at night?</Label>
+                <textarea class="form-control" cols="50" name="sleep"></textarea>
+            </div>
+
+            <div class="form-group">
+                <Label>Does anyone in your home have allergies to certain pets?</Label>
+                <textarea class="form-control" cols="50" name="allergies"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <Label>Have you ever surrendered and animal before?  If so, why?</Label>
+                <textarea class="form-control" cols="50" name="surrendered"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <Label>Where will the animal live--strictly indoors, outdoors or both?</Label>
+                <span>Please explain where he or she will spend most of their time.</span>
+                <textarea class="form-control" cols="50" name="indoorOutdoor"></textarea>
+            </div>
+
+            <div class="form-group">
+                <Label>How long will your adopted pet be home along? Where will he/she be kept?</Label>
+                <textarea class="form-control" cols="50" name="homeAlone"></textarea>
+            </div>
+
+            <div class="form-group">
+                <span>Please Provide two references who know your experience with animals. (Must be of no relation to you)</span>
+                <table class="table table-bordered table-striped contained">
+                    <tr>
+                        <td>Name:</td>
+                        <td>Telephone Number</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text"></td>
+                        <td><input type="tel"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text"></td>
+                        <td><input type="tel"></td>
+                    </tr>
+                    
+                </table>
+
+                <div>
+                    <span>By submitting this form I agree that all information above is accurate to the best of my knowledge.</span>
+                </div>
+                
 
             <input class="btn btn-primary" type="submit">
         </form>
