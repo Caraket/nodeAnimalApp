@@ -4,6 +4,7 @@
 <head>
   <title>Animal Application</title>
   <link rel="stylesheet" type="text/css" href="/CSS/app.css">
+  <link rel="stylesheet" type="text/css" href="/CSS/application.css"
   <link rel="stylesheet" type="text/css" href="/CSS/bootstrap.min.css">
   <link href="https://global.oktacdn.com/okta-signin-widget/4.1.4/css/okta-sign-in.min.css" type="text/css"
     rel="stylesheet" />
@@ -18,32 +19,32 @@
             
             <div class="form-group">
                 <label for="otherName">Other names used(including maiden name)</label>
-                <input class="form-control" type="text" name="otherName" placeholder="Other Names" required>
+                <input class="form-control" type="text" name="otherName" placeholder="Other Names">
             </div>
             
             <div class="form-group">
                 <label for="DOB">Date of Birth</label>
-                <input class="form-control" type="date" name="DOB" placeholder="Date of birth" required>
+                <input class="form-control" type="date" name="dob" placeholder="Date of birth" required>
             </div>
 
             <div class="form-group">
                 <label for="Phone">Phone Number</label>
-                <input class="form-control" type="tel" name="Phone" placeholder="Phone #" required>
+                <input class="form-control" type="tel" name="phoneNumber" placeholder="Phone #" required>
             </div>
            
             <div class="form-group">
                 <label for="Email">Email Address</label>
-                <input class="form-control" type="email" name="Email" placeholder="bob@email.com" required>
+                <input class="form-control" type="email" name="emailAddress" placeholder="bob@email.com" required>
             </div>
             
             <div class="form-group">
                 <label for="Address">Home Address</label>
-                <input class="form-control" type="text" name="Address" placeholder="555 Willow Lane, Boulder, CO 80301" required>
+                <input class="form-control" type="text" name="homeAddress" placeholder="555 Willow Lane, Boulder, CO 80301" required>
             </div>
             
             <div class="form-group">
                 <label for="petName">What is the name of the pet you would like to adopt?</label>
-                <input class="form-control" type="text" name="petName" placeholder="Shadow" >
+                <input class="form-control" type="text" name="petAdopt" placeholder="Shadow" >
             </div>
             
             <div class="form-group">
@@ -58,24 +59,24 @@
                         <td>Date of Birth</td>
                     </tr>
                     <tr>
-                        <td><input type="text"></td>
-                        <td><input type="date"></td>
+                        <td><input name="adult1" type="text" class="table-control"></td>
+                        <td><input name="dob1" type="date" class="table-control"></td>
                     </tr>
                     <tr>
-                        <td><input type="text"></td>
-                        <td><input type="date"></td>
+                        <td><input name="adult2" type="text" class="table-control"></td>
+                        <td><input name="dob2" type="date" class="table-control"></td>
                     </tr>
                     <tr>
-                        <td><input type="text"></td>
-                        <td><input type="date"></td>
+                        <td><input name="adult3" type="text" class="table-control"></td>
+                        <td><input name="dob3" type="date" class="table-control"></td>
                     </tr>
                     <tr>
-                        <td><input type="text"></td>
-                        <td><input type="date"></td>
+                        <td><input name="adult4" type="text" class="table-control"></td>
+                        <td><input name="dob4" type="date" class="table-control"></td>
                     </tr>
                     <tr>
-                        <td><input type="text"></td>
-                        <td><input type="date"></td>
+                        <td><input name="adult5" type="text" class="table-control"></td>
+                        <td><input name="dob5" type="date" class="table-control"></td>
                     </tr>
                 </table>
 
@@ -86,12 +87,12 @@
                     <option value="false">No</option>
                     <option value="true">Yes</option>
                 </select>
-                <textarea cols="100" placeholder="How many children under 5 years?"></textarea>
+                <textarea cols="100" name="hmchildren2" placeholder="How many children under 5 years?"></textarea>
             </div>
 
             <div class="form-group">
                 <Label>How long have you lived at your current address?</Label>
-                <input class="form-control" type="number">years.
+                <input class="form-control" type="number" name="currAddress" required>years.
                 
             </div>
             <div class="form-group">
@@ -105,7 +106,7 @@
 
             <div class="form-group">
                 <Label>Why do you want to adopt this pet?</Label>
-                <textarea class="form-control" cols="50" name="whyAdopt"></textarea>
+                <textarea class="form-control" cols="50" name="whyAdopt" required></textarea>
             </div>
             
             <div class="form-group">
@@ -192,12 +193,12 @@
                         <td>Telephone Number</td>
                     </tr>
                     <tr>
-                        <td><input type="text"></td>
-                        <td><input type="tel"></td>
+                        <td><input type="text" name="reference1"></td>
+                        <td><input type="tel" name="reference2"></td>
                     </tr>
                     <tr>
-                        <td><input type="text"></td>
-                        <td><input type="tel"></td>
+                        <td><input type="text" name="referenceNumber1"></td>
+                        <td><input type="tel" name="referenceNumber2"></td>
                     </tr>
                     
                 </table>

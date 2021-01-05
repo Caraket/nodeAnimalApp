@@ -39,9 +39,13 @@ const applicationSchema = new mongoose.Schema({
     sleep: String,
     reference1: String,
     reference2: String,
+    referenceNumber1: String,
+    referenceNumber2: String,
     allergies: String,
     surrendered: String,
     indoorOutdoor: String,
     homeAlone: String
 
 })
+
+module.exports = mongoose.model("Application", applicationSchema);

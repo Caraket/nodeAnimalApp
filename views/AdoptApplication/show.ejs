@@ -1,0 +1,33 @@
+<%- include ("../partials/header"); %>
+
+
+<table class="table table-bordered table-striped contained">
+    <tr>
+        <th>Name</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+        <th>Pet Name</th>
+    </tr>
+  
+    <% application.forEach(application => { %>
+    <tr>
+      <td><a href="/<%= application._id %>"><%= application.name %></a></td>
+      <td><%= application.phoneNumber %></td>
+      <td><%= application.emailAddress %></td>
+      <td><%= application.petAdopt %></td>
+    </tr>
+    <% }) %>
+  </table>
+
+
+
+
+
+
+
+
+
+
+
+
+<%- include ("../partials/footer"); %>
