@@ -14,42 +14,42 @@
         <form action="/application" method="POST">
             <div class="form-group">
                 <label for="name">Name</label>
-                <input class="form-control" type="text" name="name" placeholder="name" required>
+                <input class="form-control" type="text" name="name" placeholder="name"  value="<%= application.name %>"required>
             </div>
             
             <div class="form-group">
                 <label for="otherName">Other names used(including maiden name)</label>
-                <input class="form-control" type="text" name="otherName" placeholder="Other Names">
+                <input class="form-control" type="text" name="otherName" placeholder="Other Names" value="<%= application.otherName %>">
             </div>
             
             <div class="form-group">
                 <label for="DOB">Date of Birth</label>
-                <input class="form-control" type="date" name="dob" placeholder="Date of birth" required>
+                <input class="form-control" type="date" name="dob" placeholder="Date of birth" value="<%= application.dob %>" required>
             </div>
 
             <div class="form-group">
                 <label for="Phone">Phone Number</label>
-                <input class="form-control" type="tel" name="phoneNumber" placeholder="Phone #" required>
+                <input class="form-control" type="tel" name="phoneNumber" placeholder="Phone #" value="<%= application.phoneNumber %>" required>
             </div>
            
             <div class="form-group">
                 <label for="Email">Email Address</label>
-                <input class="form-control" type="email" name="emailAddress" placeholder="bob@email.com" required>
+                <input class="form-control" type="email" name="emailAddress" placeholder="bob@email.com" value="<%= application.emailAddress %>" required>
             </div>
             
             <div class="form-group">
                 <label for="Address">Home Address</label>
-                <input class="form-control" type="text" name="homeAddress" placeholder="555 Willow Lane, Boulder, CO 80301" required>
+                <input class="form-control" type="text" name="homeAddress" placeholder="555 Willow Lane, Boulder, CO 80301" value="<%= application.homeAddress %>" required>
             </div>
             
             <div class="form-group">
                 <label for="petName">What is the name of the pet you would like to adopt?</label>
-                <input class="form-control" type="text" name="petAdopt" placeholder="Shadow" >
+                <input class="form-control" type="text" name="petAdopt" placeholder="Shadow" value="<%= application.petAdopt %>">
             </div>
             
             <div class="form-group">
                 <label for="unsure">If you do not have a specific adoptable pet in mind, what type of pet are you looking for?(species, gender, age, size)</label>
-                <textarea class="form-control" name="typeOfPet" placeholder="Add text here"></textarea>
+                <textarea class="form-control" name="typeOfPet" placeholder="Add text here" ><%= application.typeOfPet %></textarea>
             </div>
             <div class="form-group">
                 <span>Number of other adults in the household:</span>
@@ -59,8 +59,8 @@
                         <td>Date of Birth</td>
                     </tr>
                     <tr>
-                        <td><input name="adult1" type="text" class="table-control"></td>
-                        <td><input name="dob1" type="date" class="table-control"></td>
+                        <td><input name="adult1" type="text" class="table-control" value="<%= application.adult1 %>"></td>
+                        <td><input name="dob1" type="date" class="table-control" value="<%= application.dob1 %> "></td>
                     </tr>
                     <tr>
                         <td><input name="adult2" type="text" class="table-control"></td>

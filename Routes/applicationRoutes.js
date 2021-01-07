@@ -5,13 +5,13 @@ const router = express.Router();
 
 
 
-router.get("/show", (req, res) => {
+router.get("/", (req, res) => {
     adopt.find({}, (err, application) => {
         if (err) {
             console.log(err);
         } else {
             const { userContext } = req;
-            res.render("adoptapplication/show", {
+            res.render("adoptapplication/index", {
                 application: application,
                 userContext
             });
@@ -20,11 +20,7 @@ router.get("/show", (req, res) => {
     });
 });
 
-//NEW ROUTE
-router.get("/", (req, res) => {
-    const { userContext } = req;
-    res.render("adoptapplication/application");
-});
+
 
 //CREATE ROUTE
 router.post("/", (req, res) => {
@@ -32,13 +28,70 @@ router.post("/", (req, res) => {
     var myData = new adopt(req.body);
     myData.save()
         .then(item => {
-            res.send("Information saved to Database");
+            res.status(200).send("Information saved to Database");
         })
         .catch(err => {
             res.status(400).send("Unable to save to the Database");
+            console.log(err);
         })
 
 });
+
+
+//SHOW ROUTE
+router.get("/:id", (req, res) => {
+    adopt.findById(req.params.id, (err, foundApplication) => {
+        if (err) {
+            res.redirect("/applications");
+        } else {
+            const { userContext } = req;
+            res.render("AdoptApplication/show", {
+                application: foundApplication,
+                userContext
+            });
+        }
+    });
+});
+
+
+// EDIT ROUTE
+router.get("/:id/edit", (req, res) => {
+    adopt.findById(req.params.id, (err, foundApplication) => {
+        if (err) {
+            res.redirect("/applications/show");
+        } else {
+            const { userContext } = req;
+            res.render("adoptapplication/edit", {
+                application: foundApplication,
+                userContext
+            });
+        }
+    });
+});
+
+//UPDATE ROUTE
+router.put("/:id", (req, res) => {
+    adopt.findByIdAndUpdate(req.params.id, req.body.animal, (err, updatedApplication) => {
+        if (err) {
+            res.redirect("/applications/show");
+        } else {
+            res.redirect("/applications" + req.params.id);
+        }
+    });
+});
+
+
+// DESTROY  Route
+router.delete("/:id/", function (req, res) {
+    adopt.findByIdAndRemove(req.params.id, function (err) {
+        if (err) {
+            res.redirect("/applications/");
+        } else {
+            res.redirect("/applications/");
+        }
+    });
+});
+
 
 
 module.exports = router;

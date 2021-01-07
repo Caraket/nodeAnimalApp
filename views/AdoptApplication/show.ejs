@@ -1,33 +1,84 @@
-<%- include ("../partials/header"); %>
+<%- include ("../partials/header") %>
+<div class="contained">
+    <div>
+        <div class="jumbotron">
+            <h1><%= application.name %></h1>
+        </div>
+        <div class="ui top attached">
+            <div class="item">
+                <p> Other Names: <%= application.otherName %> </p>
+                <p> Date of Birth: <%= application.dob %> </p>
+                <p>Phone: <%= application.phoneNumber %></p>
+                <p>Email: <%= application.emailAddress %></p>
+                <p>Address: <%= application.homeAddress %></p>
+                <p>Which Pet would you like to adopt: <%= application.petAdopt %></p>
+                <p>If you don't have a specific pet in mind, what type of pet are you looking for?  <%= application.typeOfPet %></p>
+                <p>Other Adult: <%= application.adult1 %></p>
+                <p>Date of Birth <%= application.dob1 %></p>
+                <p>Other Adult: <%= application.adult2 %></p>
+                <p>Date of Birth <%= application.dob2 %></p>
+                <p>Other Adult: <%= application.adult3 %></p>
+                <p>Date of Birth <%= application.dob3 %></p>
+                <p>Other Adult: <%= application.adult4 %></p>
+                <p>Date of Birth <%= application.dob4 %></p>
+                <p>Other Adult: <%= application.adult5 %></p>
+                <p>Date of Birth <%= application.dob5 %></p>
+                <p>Children younger than 5: <%= application.hmchildren %></p>
+                <p>How many children under 5: <%= application.hmchildren2 %></p>
+                <p>How long at current address: <%= application.currAddress %> years.</p>
+                <p>Steady Employment: <%= application.steadyEmployment %></p>
+                <p>Why Adopt: <%= application.whyAdopt %></p>
+                <p>Personality looking for: <%= application.personality %></p>
+                <p>Unacceptable traits: <%= application.unacceptable %></p>
+                <p>Own or Rent: <%= application.ownorRent %></p>
+                <p>Checked with landlord and city: <%= application.checkWithLord %></p>
+                <p>LandLord or rental company: <%= application.landLord %></p>
+                <p>LandLord phone number: <%= application.landLordPhone %></p>
+                <p>Other Pets: <%= application.otherPets %></p>
+                <p>Do your pets get along with others: <%= application.getAlong %></p>
+                <p>Past Animals: <%= application.pastAnimals %></p>
+                <p>Current Vet: <%= application.currentVet %></p>
+                <p>Where will the animal Sleep: <%= application.sleep %></p>
+                <p>Does anyone in the house have pet allergies: <%= application.allergies %></p>
+                <p>Have you ever surrendered any pets: <%= application.surrendered %></p>
+                <p>Will the pet be indoor--outdoor or both: <%= application.indoorOutdoor %></p>
+                <p>How long will the animal be home alone: <%= application.homeAlone %></p>
 
 
-<table class="table table-bordered table-striped contained">
-    <tr>
-        <th>Name</th>
-        <th>Phone Number</th>
-        <th>Email</th>
-        <th>Pet Name</th>
-    </tr>
-  
-    <% application.forEach(application => { %>
-    <tr>
-      <td><a href="/<%= application._id %>"><%= application.name %></a></td>
-      <td><%= application.phoneNumber %></td>
-      <td><%= application.emailAddress %></td>
-      <td><%= application.petAdopt %></td>
-    </tr>
-    <% }) %>
-  </table>
+                <table class="table table-bordered table-striped contained appTable">
+                    <tr>
+                        <th>Name:</th>
+                        <th>Phone Number:</th>
+                    </tr>
+                    <tr>
+                        <td><%= application.reference1 %></td>
+                        <td><%= application.referenceNumber1 %></td>
+                    </tr>
+                    <tr>
+                        <td><%= application.reference2 %></td>
+                        <td><%= application.referenceNumber2 %></td>
+                    </tr>
+                </table>
+
+                
+
+
+                
+
+                <div class="content">
+
+                </div>
+                <a class="btn btn-primary" href="/applications/<%= application._id %>/edit">Edit</a>
+                <form id="delete-form" action="/applications/<%=application._id%>/?_method=DELETE" method="POST">
+                    <input type="submit" class="btn btn-xs btn-danger" value="Delete">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
 
 
-
-
-
-
-
-
-
-<%- include ("../partials/footer"); %>
+<%- include ("../partials/footer") %>

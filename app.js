@@ -18,7 +18,8 @@ const dogs = require('./Routes/dogRoutes');
 const cats = require('./Routes/catRoutes');
 const other = require('./Routes/otherRoute');
 const volunteer = require('./Routes/volunteerRoutes');
-const application = require('./Routes/applicationRoutes');
+const application = require('./Routes/applicationRoute');
+const applications = require('./Routes/applicationRoutes');
 const { resolve } = require("path");
 
 //Mongo URI
@@ -66,6 +67,7 @@ app.use(session({
 app.use('/application/', application);
 app.use(oidc.router)
 app.use(oidc.ensureAuthenticated(), other);
+app.use('/applications', applications);
 app.use('/volunteer/', volunteer);
 app.use(dogs);
 app.use(cats);
