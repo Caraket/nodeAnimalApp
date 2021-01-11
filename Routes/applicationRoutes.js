@@ -20,23 +20,19 @@ router.get("/", (req, res) => {
     });
 });
 
-
-
 //CREATE ROUTE
 router.post("/", (req, res) => {
 
     var myData = new adopt(req.body);
     myData.save()
         .then(item => {
-            res.status(200).send("Information saved to Database");
+            res.status(200).redirect("adoptapplication/index");
         })
         .catch(err => {
             res.status(400).send("Unable to save to the Database");
-            console.log(err);
         })
 
 });
-
 
 //SHOW ROUTE
 router.get("/:id", (req, res) => {
@@ -71,9 +67,9 @@ router.get("/:id/edit", (req, res) => {
 
 //UPDATE ROUTE
 router.put("/:id", (req, res) => {
-    adopt.findByIdAndUpdate(req.params.id, req.body.animal, (err, updatedApplication) => {
+    adopt.findByIdAndUpdate(req.params.id, req.body.adopt, (err, updatedApplication) => {
         if (err) {
-            res.redirect("/applications/show");
+            res.redirect("/applications/");
         } else {
             res.redirect("/applications" + req.params.id);
         }

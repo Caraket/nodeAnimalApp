@@ -11,22 +11,15 @@
   
     <% application.forEach(application => { %>
     <tr>
+      <%if (application.archived != true) { %>
       <td><a href="/applications/<%= application._id %>"><%= application.name %></a></td>
       <td><%= application.phoneNumber %></td>
       <td><%= application.emailAddress %></td>
       <td><%= application.petAdopt %></td>
+      <% } %>
     </tr>
     <% }) %>
   </table>
-
-
-
-
-
-
-
-
-
 
 
 

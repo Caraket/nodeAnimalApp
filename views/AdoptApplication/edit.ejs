@@ -6,15 +6,65 @@
   <link rel="stylesheet" type="text/css" href="/CSS/app.css">
   <link rel="stylesheet" type="text/css" href="/CSS/application.css">
   <link rel="stylesheet" type="text/css" href="/CSS/bootstrap.min.css">
+  <link rel="icon" type="image/svg+xml" href="https://example.com/image.svg">
+
   <link href="https://global.oktacdn.com/okta-signin-widget/4.1.4/css/okta-sign-in.min.css" type="text/css"
     rel="stylesheet" />
 </head>
 
     <body>
-        <form action="/application" method="POST">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark margin-bottom">
+            <a class="navbar-brand" href="/">Great Tails Animal Rescue</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="/">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dogs">Dogs</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/cats">Cats</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/other">Other</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/volunteer">Volunteers</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/applications/">Applications</a>
+                </li>
+              </ul>
+              <ul class="navbar-nav ml-auto">
+                <% if(!userContext){ %>
+                <li class="nav-item">
+                  <a class="nav-item nav-link" href="/login">Log In</a>
+                </li>
+                <% } %>
+        
+        
+                <% if(userContext){ %>
+                <form method="POST" action="/logout">
+                  <button type="submit" class="btn btn-link nav-item nav-link">Logout</button>
+                </form>
+                <% } %>
+              </ul>
+        
+        
+        
+        
+            </div>
+          </nav>
+        <form action="/applications<%= application._id%>?_method=PUT" method="POST">
+           
             <div class="form-group">
                 <label for="name">Name</label>
-                <input class="form-control" type="text" name="name" placeholder="name"  value="<%= application.name %>"required>
+                <input class="form-control" type="text" name="name" placeholder="name"  value="<%= application.name %>" required>
             </div>
             
             <div class="form-group">
@@ -60,23 +110,23 @@
                     </tr>
                     <tr>
                         <td><input name="adult1" type="text" class="table-control" value="<%= application.adult1 %>"></td>
-                        <td><input name="dob1" type="date" class="table-control" value="<%= application.dob1 %> "></td>
+                        <td><input name="dob1" type="date" class="table-control" value="<%= application.dob1 %>"></td>
                     </tr>
                     <tr>
-                        <td><input name="adult2" type="text" class="table-control"></td>
-                        <td><input name="dob2" type="date" class="table-control"></td>
+                        <td><input name="adult2" type="text" class="table-control" value="<%= application.adult2 %>"></td>
+                        <td><input name="dob2" type="date" class="table-control" value="<%= application.dob2 %>"></td>
                     </tr>
                     <tr>
-                        <td><input name="adult3" type="text" class="table-control"></td>
-                        <td><input name="dob3" type="date" class="table-control"></td>
+                        <td><input name="adult3" type="text" class="table-control" value="<%= application.adult3 %>"></td>
+                        <td><input name="dob3" type="date" class="table-control" value="<%= application.dob3 %>"></td>
                     </tr>
                     <tr>
-                        <td><input name="adult4" type="text" class="table-control"></td>
-                        <td><input name="dob4" type="date" class="table-control"></td>
+                        <td><input name="adult4" type="text" class="table-control" value="<%= application.adult4 %>"></td>
+                        <td><input name="dob4" type="date" class="table-control" value="<%= application.dob4 %>"></td>
                     </tr>
                     <tr>
-                        <td><input name="adult5" type="text" class="table-control"></td>
-                        <td><input name="dob5" type="date" class="table-control"></td>
+                        <td><input name="adult5" type="text" class="table-control" value="<%= application.adult5 %>"></td>
+                        <td><input name="dob5" type="date" class="table-control" value="<%= application.dob5 %>"></td>
                     </tr>
                 </table>
 
@@ -84,110 +134,110 @@
             <div class="form-group ">
                 <label>Do you have any children under the age of 5 years? If so, how many and please list ages.(no names)</label>
                 <select class="form-control" name="hmchildren">
-                    <option value="false">No</option>
-                    <option value="true">Yes</option>
+                        <option value="false" <%= application.hmchildren === "false" ? "selected" : "" %>>No</option>
+                        <option value="true" <%= application.hmchildren === "true" ? "selected" : "" %> >Yes</option>
                 </select>
-                <textarea cols="100" name="hmchildren2" placeholder="How many children under 5 years?"></textarea>
+                <textarea cols="100" name="hmchildren2" placeholder="How many children under 5 years?"><%= application.hmchildren2 %></textarea>
             </div>
 
             <div class="form-group">
                 <Label>How long have you lived at your current address?</Label>
-                <input class="form-control" type="number" name="currAddress" required>years.
+                <input class="form-control" type="number" name="currAddress" value="<%= application.currAddress %>" required>years.
                 
             </div>
             <div class="form-group">
                 <Label>Do you have steady employment?</Label>
                 <select class="form-control" name="steadyEmployment">
                     <option value="">Please choose one</option>
-                    <option value="false">No</option>
-                    <option value="true">Yes</option>
+                    <option value="false" <%= application.steadyEmployment === "false" ? "selected" : "" %>>No</option>
+                    <option value="true" <%= application.steadyEmployment === "true" ? "selected" : "" %>>Yes</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <Label>Why do you want to adopt this pet?</Label>
-                <textarea class="form-control" cols="50" name="whyAdopt" required></textarea>
+                <textarea class="form-control" cols="50" name="whyAdopt" required><%= application.whyAdopt %></textarea>
             </div>
             
             <div class="form-group">
                 <Label>What personality are you seeking?</Label>
-                <textarea class="form-control" cols="50" name="personality"></textarea>
+                <textarea class="form-control" cols="50" name="personality"> <%= application.personality %></textarea>
             </div>
             
             <div class="form-group">
                 <Label>What pet behaviors are unacceptable to you and how would you address them?</Label>
-                <textarea class="form-control" cols="50" name="unacceptable"></textarea>
+                <textarea class="form-control" cols="50" name="unacceptable"><%= application.unacceptable %></textarea>
             </div>
 
             <div class="form-group">
                 <Label>Do you rent or own?</Label>
                 <select class="form-control" name="ownorRent">
-                    <option value="">Please choose one</option>
-                    <option value="Rent">Rent</option>
-                    <option value="Own">Own</option>
+                    <option value=""  <%= application.ownorRent === "" ? "selected" : "" %> >Please choose one</option>
+                    <option value="Rent"  <%= application.ownorRent === "Rent" ? "selected" : "" %>>Rent</option>
+                    <option value="Own"  <%= application.ownorRent === "Own" ? "selected" : "" %>>Own</option>
                 </select>
             </div>
             
             <div class="form-group">
                 <Label>If rent, have you check with your landlord or city ordinances?</Label>
                 <span class="font-weight-bold font-italic">Great Tails Animal Rescue reserves the right to schedule a phone or in-person interview with your landlord prior to any adoption being finalized.</span>
-                <textarea class="form-control" cols="50" name="checkWithLord"></textarea>
+                <textarea class="form-control" cols="50" name="checkWithLord"><%= application.checkWithLord %></textarea>
             </div>
             
             <div class="form-group">
                 <Label>Landlord/Management Company</Label>
-                <input class="form-control" type="text" name="landLord" >
+                <input class="form-control" type="text" name="landLord" value="<%= application.landLord %>" >
             </div>
             
             <div class="form-group">
                 <Label>Landlord/Management Company Phone</Label>
-                <input class="form-control" type="text" name="landLordPhone" >
+                <input class="form-control" type="text" name="landLordPhone" value="<%= application.landLordPhone %>">
             </div>
 
             <div class="form-group">
                 <Label>If you have pets what species, age, and breeds are they and are they up to date on vaccines and spayed or neutered?</Label>
-                <textarea class="form-control" cols="50" name="otherPets"></textarea>
+                <textarea class="form-control" cols="50" name="otherPets"><%= application.otherPets %></textarea>
             </div>
             
             <div class="form-group">
                 <Label>Do you know if your current pet(s) get along well with other pets?</Label>
-                <textarea class="form-control" cols="50" name="getAlong"></textarea>
+                <textarea class="form-control" cols="50" name="getAlong"><%= application.getAlong %></textarea>
             </div>
             
             <div class="form-group">
                 <Label>If you currently have no pets, please list which type of animals you have owned in the past and approximately how long ago.</Label>
-                <textarea class="form-control" cols="50" name="pastAnimals"></textarea>
+                <textarea class="form-control" cols="50" name="pastAnimals"><%= application.pastAnimals %></textarea>
             </div>
 
             <div class="form-group">
                 <Label>What is your current veterinary clinic?</Label>
-                <input class="form-control" type="text" name="currentVet" >
+                <input class="form-control" type="text" name="currentVet" value="<%= application.currentVet %>">
             </div>
 
             <div class="form-group">
                 <Label>Where will the adopted animal sleep at night?</Label>
-                <textarea class="form-control" cols="50" name="sleep"></textarea>
+                <textarea class="form-control" cols="50" name="sleep"> <%= application.sleep %> </textarea>
             </div>
 
             <div class="form-group">
                 <Label>Does anyone in your home have allergies to certain pets?</Label>
-                <textarea class="form-control" cols="50" name="allergies"></textarea>
+                <textarea class="form-control" cols="50" name="allergies"> <%= application.allergies %> </textarea>
             </div>
             
             <div class="form-group">
                 <Label>Have you ever surrendered and animal before?  If so, why?</Label>
-                <textarea class="form-control" cols="50" name="surrendered"></textarea>
+                <textarea class="form-control" cols="50" name="surrendered"> <%= application.surrendered %> </textarea>
             </div>
             
             <div class="form-group">
                 <Label>Where will the animal live--strictly indoors, outdoors or both?</Label>
                 <span>Please explain where he or she will spend most of their time.</span>
-                <textarea class="form-control" cols="50" name="indoorOutdoor"></textarea>
+                <textarea class="form-control" cols="50" name="indoorOutdoor"> <%= application.indoorOutdoor %> </textarea>
             </div>
 
             <div class="form-group">
                 <Label>How long will your adopted pet be home along? Where will he/she be kept?</Label>
-                <textarea class="form-control" cols="50" name="homeAlone"></textarea>
+                <textarea class="form-control" cols="50" name="homeAlone"> <%= application.homeAlone %> </textarea>
             </div>
 
             <div class="form-group">
@@ -198,12 +248,12 @@
                         <td>Telephone Number</td>
                     </tr>
                     <tr>
-                        <td><input type="text" name="reference1"></td>
-                        <td><input type="tel" name="referenceNumber1"></td>
+                        <td><input type="text" name="reference1" value="<%= application.reference1 %>"></td>
+                        <td><input type="tel" name="referenceNumber1" value="<%= application.referenceNumber1 %>"></td>
                     </tr>
                     <tr>
-                        <td><input type="text" name="reference2"></td>
-                        <td><input type="tel" name="referenceNumber2"></td>
+                        <td><input type="text" name="reference2" value="<%= application.reference2 %>" ></td>
+                        <td><input type="tel" name="referenceNumber2" value="<%= application.referenceNumber2 %>"></td>
                     </tr>
                     
                 </table>

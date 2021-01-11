@@ -44,7 +44,8 @@ const applicationSchema = new mongoose.Schema({
     allergies: String,
     surrendered: String,
     indoorOutdoor: String,
-    homeAlone: String
+    homeAlone: String,
+    archived: Boolean
 
 })
 
